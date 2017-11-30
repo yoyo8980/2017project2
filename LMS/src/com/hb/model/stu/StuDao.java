@@ -16,7 +16,7 @@ public class StuDao {
 	ResultSet rs;
 	ArrayList<StuDto> list;
 	ArrayList<StuDto> list2;
-	ArrayList<StuDto> list3;
+	StuDto list3;
 	ArrayList<StuDto> list4;
 	public ArrayList<StuDto> StuView(){
 		String sql="select * from stu where status='수강중' or status='수강예정'";
@@ -29,7 +29,7 @@ public class StuDao {
 				StuDto bean= new StuDto();
 				bean.setsId(rs.getInt("sId"));
 				bean.setsName(rs.getString("sName"));
-				bean.setBirth(rs.getString("birth"));
+				bean.setBirth(rs.getString("birth").substring(0, 10));
 				bean.setStatus(rs.getString("status"));
 				list.add(bean);				
 			}			
@@ -46,22 +46,35 @@ public class StuDao {
 		return list;
 	}
 	
-	public ArrayList<StuDto> StuCom(){
-		String sql2="select * from stu where status='수료'";
+	public ArrayList<StuDto> StuCom(String sName){	//과거학생조회
+		String sql2="select sid,sname,birth,status from(select sid,sname,birth,status from stu where status NOT LIKE '%수강%') where sname=?";
+		//System.out.println(sql2);
 		conn=MyOracle.getConnection();
+		//System.out.println("conn받기");
 		try{
 			pstmt=conn.prepareStatement(sql2);
+			//System.out.println(pstmt);
+			pstmt.setString(1, sName);
+			//System.out.println(sName);
 			rs=pstmt.executeQuery();
-			list2 = new ArrayList<StuDto>();
+			//System.out.println(rs);
+			list2=new ArrayList<StuDto>();
+			System.out.println(list2);
 			while(rs.next()){
+				//System.out.println(rs.getType());
 				StuDto bean= new StuDto();
+				
+				System.out.println(bean);
 				bean.setsId(rs.getInt("sId"));
+				System.out.println("com,sId");
 				bean.setsName(rs.getString("sName"));
-				bean.setBirth(rs.getString("birth"));
-				bean.setPhone(rs.getString("phone"));
-				bean.setEmail(rs.getString("email"));
-				bean.setRegclass(rs.getInt("regclass"));
+				System.out.println("com,sName");
+				bean.setBirth(rs.getString("birth").substring(0,10));
+				System.out.println("com,sbirth");
+				bean.setStatus(rs.getString("status"));
+				System.out.println("com,status");
 				list2.add(bean);				
+				System.out.println("com,list2");
 			}			
 		}catch(Exception e){
 		}finally{
@@ -75,22 +88,24 @@ public class StuDao {
 		}
 		return list2;
 	}
-	public ArrayList<StuDto> StuGU(){
-		String sql3="select sid, sname, birth from stu where status='수료' or status='포기',sname=?";
+	public StuDto StuGU(int sId){
+		String sql3="select * from stu where sid=?";
+		StuDto bean= new StuDto();
 		conn=MyOracle.getConnection();
 		try{
 			pstmt=conn.prepareStatement(sql3);
+			pstmt.setInt(1, sId);
 			rs=pstmt.executeQuery();
-			list3 = new ArrayList<StuDto>();
 			while(rs.next()){
-				StuDto bean= new StuDto();
 				bean.setsId(rs.getInt("sId"));
+				System.out.println(sId);
 				bean.setsName(rs.getString("sName"));
-				bean.setBirth(rs.getString("birth"));
+				System.out.println("dao,sname");
+				bean.setBirth(rs.getString("birth").substring(0,10));
 				bean.setPhone(rs.getString("phone"));
 				bean.setEmail(rs.getString("email"));
 				bean.setRegclass(rs.getInt("regclass"));
-				list3.add(bean);				
+				bean.setStatus(rs.getString("status"));
 			}			
 		}catch(Exception e){
 		}finally{
@@ -102,7 +117,7 @@ public class StuDao {
 				e.printStackTrace();
 			}
 		}
-		return list3;
+		return bean;
 	}
 	
 	public void Stuadd(int sId,String sName, String birth, String phone, String email, int regclass){
@@ -154,7 +169,7 @@ public class StuDao {
 			if(rs.next()){
 				bean.setsId(rs.getInt("sId"));
 				bean.setsName(rs.getString("sName"));
-				bean.setBirth(rs.getString("birth"));
+				bean.setBirth(rs.getString("birth").substring(0, 10));
 				bean.setPhone(rs.getString("phone"));
 				bean.setEmail(rs.getString("email"));
 				bean.setRegclass(rs.getInt("regclass"));

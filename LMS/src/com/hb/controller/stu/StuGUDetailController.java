@@ -9,34 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.hb.model.stu.StuDao;
 import com.hb.model.stu.StuDto;
+@WebServlet("/stugudetail.do")
+public class StuGUDetailController extends HttpServlet{
 
-@WebServlet("/stucom.do")
-public class StuComController extends HttpServlet{
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			req.getRequestDispatcher("stucom.jsp").forward(req, resp);
-			System.out.println("stucom");
-		}
+		
+		int sId=Integer.parseInt(req.getParameter("sId"));
+		System.out.println(sId);
+		StuDao dao=new StuDao();
+		System.out.println(dao);
+		StuDto bean=dao.StuGU(sId); 
+		
+		req.setAttribute("bean", bean);
+		req.getRequestDispatcher("stugudetail.jsp").forward(req, resp);
+		
+	}
 //	@Override
 //	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 //			throws ServletException, IOException {
 //		// TODO Auto-generated method stub
-//		req.setCharacterEncoding("UTF-8");
-//		
-//		String sName=req.getParameter("sName");
+//		int sId=Integer.parseInt(req.getParameter("sId"));
 //		StuDao dao=new StuDao();
-//		ArrayList<StuDto> list2= dao.StuCom(sName);
+//		StuDto bean=dao.Studetail(sId); 
 //		
-//		
-//		req.setAttribute("list2", list2);
-//		resp.sendRedirect("stugu.do");
-//		
+//		req.setAttribute("bean", bean);
 //	}
 	
 }

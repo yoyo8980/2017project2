@@ -29,7 +29,7 @@
 			</tr>
 		</c:forEach>
 		</table>
-	
+	<a href="stu.do">[목록으로]</a>
 	
 </body>
 </html>
