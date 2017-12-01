@@ -6,17 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>후보생 추가 페이지</title>
 </head>
 <body>
-<h1>학생추가페이지</h1>
+<h1>후보생추가페이지</h1>
 
-<form action="stuadd.do" method="post">
+<form action="candiadd.do" method="post">
 
 <div>
 	<label for="sid">아이디</label>
 	<c:forEach items="${bean }" var="bean2" begin="0" end="0">
-		<input type="text" name="sId" value="${bean2.sId }" readonly="readonly"/>
+	<input type="text" name="sId" value="${bean2.sId }" readonly="readonly"/>
 	</c:forEach>
 </div>
 <div>
@@ -36,12 +36,16 @@
 	<input type="email" name="email" />
 </div>
 <div>
-	 반<select name="regclass">
-		<option>수업중인 반</option>
-		<c:forEach items="${bean2 }" var="bean3">
-			<option value="${bean3 }">${bean3 }</option> 
-		</c:forEach> 	
+	상태 <select name="status">
+	<option>선택하세요</option>
+	<c:forEach items="${bean }" var="bean2" begin="0" end="2">
+		<option value="${bean2.status }">${bean2.status }</option>
+	</c:forEach>
 	</select>
+</div>
+<div>
+	<label for="regclass">반</label>
+	<input type="number" name="regclass" />
 </div>
 	<button type="submit">입력</button>
 </form>

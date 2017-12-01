@@ -18,8 +18,8 @@ public class StuDetailController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int sId=Integer.parseInt(req.getParameter("sId"));
 		StuDao dao=new StuDao();
+		int sId=Integer.parseInt(req.getParameter("sId"));
 		StuDto bean=dao.Studetail(sId); 
 		
 		req.setAttribute("bean", bean);

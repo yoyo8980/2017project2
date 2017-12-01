@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>후보생 상세 페이지</title>
 </head>
 <body>
-<h1>학생상세페이지</h1>
-<form action="studetail.do?sId=${bean.sId }">
+<h1>후보생 상세페이지</h1>
+<form action="candidetail.do?sId=${bean.sId }">
 
 	<table border="1">
 		<tr>
@@ -42,8 +42,8 @@
 		</tr>
 	</table>
 </form>
-<a href="stuedit.do?sId=${bean.sId }">[수정]</a>
-<a href="studelete.do?sId=${bean.sId }">[삭제]</a>
-<a href="stuview.do">[목록]</a>
+<a href="candiedit.do?sId=${bean.sId }">[수정]</a>
+<a href="candidelete.do?sId=${bean.sId }">[삭제]</a>
+<a href="candiview.do">[목록]</a>
 </body>
 </html>
