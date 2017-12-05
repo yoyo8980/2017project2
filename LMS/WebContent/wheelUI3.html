@@ -53,7 +53,8 @@
             
             var tStamp=0;
             document.addEventListener("wheel",function(e){
-              console.log(e.timeStamp); 
+              console.log(e);
+                console.log(e.wheelDelta);
                 var eStamp=e.timeStamp;
                 tStamp+=100; //이쪽 마우스 휠 관련 속도 조정할떄 값 변경
                 if(tStamp<eStamp){
