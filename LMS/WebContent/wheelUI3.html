@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+
+        h1{
+            width: 150px;
+            display: inline-block;
+            margin: 10px;
+            border-right: 1px solid black;
+            font-size: 3em;
+            position: absolute;
+            left: 0px;
+            transition: 0.5s;
+           
+            /* cf. transition: width 0.5s makes it rugh */ 
+        }
+
+        #content>div{
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        window.onload = function(){
+
+            var menu = document.getElementsByTagName("h1");
+            var content = document.querySelectorAll("#content > div");
+            var screenW = window.screen.width;
+        
+            //initialize positions
+            var leftLocus=0;
+            for(let i=0; i<menu.length; i++){
+                menu[i].style.left=leftLocus+"px";
+                leftLocus+=400;
+            }           
+            //wheel to move menu left
+            
+            // 휠 변경 김성식 
+           function actWheel(){
+                    for(let i=0; i<menu.length; i++){
+                        var rect = menu[i].getBoundingClientRect();
+                        var newLeft = rect.left+400;
+                        if(newLeft<=2800){menu[i].style.left=newLeft-10+"px";}                    
+                        else if(newLeft>2800){menu[i].style.left="0px";}
+                    }
+           };
+            
+            var tStamp=0;
+            document.addEventListener("wheel",function(e){
+              console.log(e.timeStamp); 
+                var eStamp=e.timeStamp;
+                tStamp+=100; //이쪽 마우스 휠 관련 속도 조정할떄 값 변경
+                if(tStamp<eStamp){
+                    tStamp=eStamp; 
+                    window.setTimeout(actWheel,100); // 이쪽 마우스 휠 관련 속도 조정할떄 값 변경   
+                }else{tStamp=eStamp+300;} // 이쪽 마우스 휠 관련 속도 조정할떄 값 변경
+            }); // 휠 변경 김성식
+                        
+            //mouseoever to enlarge menu text
+            for(let i=0; i<menu.length; i++){
+                menu[i].addEventListener("mouseover", function(){
+                    menu[i].style.fontSize="4em";
+                    menu[i].style.color="pink";
+                    document.body.style.backgroundColor="yellow";
+                    menu[i].addEventListener("mouseout", function(){
+                        menu[i].style.fontSize="3em";
+                        menu[i].style.color="black";
+                        document.body.style.backgroundColor="white";
+                    });
+                });
+            }
+            
+            //mouseclick to effect on menu
+            //and to show its content in main
+            for(let i=0; i<menu.length; i++){
+                menu[i].addEventListener("click", function(){
+                    menu[i].style.transform="rotate(7deg)";
+                    //remove click effect
+                    window.setInterval(function(){ 
+                        menu[i].style.transform="none"
+                    }, 1000);
+                    
+                    //hide all the other contents
+                    for(let j=0; j<content.length; j++){
+                        content[j].style.display="none";
+                    }
+                    
+                    //show the clicked content
+                    content[i].style.display="block";
+                    
+                });   
+            } 
+        };
+    </script>
+</head>
+<body>
+
+        <h1>Company</h1>
+        <h1>Lectures</h1>
+        <h1>December</h1>
+        <h1>January</h1>
+        <h1>Teachers</h1>
+        <h1>Question</h1>
+        <h1>Email</h1>
+
+    
+    <div id="content">
+        <div>Company Content</div>
+        <div>Lectures Table</div>
+        <div>December Lecture</div>
+        <div>January Lecture</div>
+        <div>Teachers Profiles</div>
+        <div>Q and A table</div>
+        <div>Send Email Form</div>
+        
+    </div>
+
+</body>

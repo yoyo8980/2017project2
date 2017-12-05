@@ -38,14 +38,17 @@
 <div>
 	상태 <select name="status">
 	<option>선택하세요</option>
-	<c:forEach items="${bean }" var="bean2" begin="0" end="2">
+	<c:forEach items="${bean }" var="bean2">
 		<option value="${bean2.status }">${bean2.status }</option>
 	</c:forEach>
+	<!-- <option>상담중</option>
+	<option>수강대기</option>
+	<option>수강예정</option> -->
 	</select>
 </div>
 <div>
 	<label for="regclass">반</label>
-	<input type="number" name="regclass" />
+	<input type="number" name="regclass" value="9999" readonly="readonly"/>
 </div>
 	<button type="submit">입력</button>
 </form>

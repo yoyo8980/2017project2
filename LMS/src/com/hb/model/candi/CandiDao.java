@@ -160,6 +160,7 @@ public class CandiDao {
 	public void CandiEdit(int sId, String sName, String birth, String phone, String email, String status, int regclass){
 		String esql="update candi set sname=?, birth=to_date(?,'yyyy-mm-dd'), phone=?, email=?, status=?, regclass=? where sid=?";
 		//후보생 수정페이지-여기서 status 수강예정으로 바뀌면 삭제되고 stu 테이블로 삽입
+		
 		try {
 			pstmt=conn.prepareStatement(esql);
 			pstmt.setString(1, sName);
@@ -203,6 +204,35 @@ public class CandiDao {
 				e.printStackTrace();
 			}
 		}
+		
+	}
+	
+	public void CandiAdmi(int sId, String sName, String birth, String phone, String email, String status, int regclass){
+		
+		String admisql="insert into stu values(?,?,to_date(?,'yyyy-mm-dd'),?,?,?,?)";
+		try {
+			pstmt=conn.prepareStatement(admisql);
+			pstmt.setInt(1, sId);
+			pstmt.setString(2, sName);
+			pstmt.setString(3, birth);
+			pstmt.setString(4, phone);
+			pstmt.setString(5, email);
+			pstmt.setString(6, status);
+			pstmt.setInt(7, regclass);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 }

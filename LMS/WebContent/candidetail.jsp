@@ -45,5 +45,6 @@
 <a href="candiedit.do?sId=${bean.sId }">[수정]</a>
 <a href="candidelete.do?sId=${bean.sId }">[삭제]</a>
 <a href="candiview.do">[목록]</a>
+<a href="candiview.do">[입학]</a><!-- 입학누르면 테이블에서 삭제되고, stu테이블로 들어가짐. -->
 </body>
 </html>

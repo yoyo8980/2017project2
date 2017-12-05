@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <style>
+        *{
+            align-content: stretch;
+           margin: 0,0, auto;
+        }
+        h1{
+            width: 150px;
+            display: inline-block;
+            margin: 10px;
+            border-right: 1px solid black;
+            font-size: 2em;
+            position: relative;
+            left: 0px;
+            transition: 0.5s;
+            cursor: pointer;
+            text-align: center;
+            /* cf. transition: width 0.5s makes it rugh */ 
+        }
+        #content{
+            
+             z-index: 1;
+        }
+        #content>div{
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+           
+        }
+
+	#padding{
+        position: absolute;
+		padding-top: 280px;
+	z-index: 1;
+		
+	}
+	#imgs{
+	position: absolute;
+		visibility:hidden;
+        padding-top: 1000px;
+	width: 1200px;
+	height: 600px;
+		z-index:-1 ;
+	}
+        #video{
+            position: absolute;
+            visibility: hidden;
+            padding-top: 1000px;
+            width: 1200px;
+	height: 600px;
+            z-index:-1 ;
+        }
+        #map{
+            position: absolute;
+            width: 1200px;
+	height: 600px;
+        }
+        
+	 </style>
+    <script>
+         
+        
+        window.onload = function(){
+            function playVid() { 
+                            vid.play(); 
+                        };
+            function pauseVid() { 
+                            vid.pause(); 
+                        } 
+            var vid = document.getElementById("video");
+            var menu = document.getElementsByTagName("h1");
+            var content = document.querySelectorAll("#content > div");
+            var screenW = window.screen.width;
+            
+            //initialize positions
+            var leftLocus=0;
+            for(let i=0; i<menu.length; i++){
+                menu[i].style.left=leftLocus+"px";
+                leftLocus+10 ;
+            }
+            
+            //wheel to move menu left
+            document.addEventListener("wheel", function(){
+                for(let i=0; i<menu.length; i++){
+                    var rect = menu[i].getBoundingClientRect();
+                    var newLeft = rect.left+10;
+                    if(newLeft>1200){menu[i].style.left="-1200px";}
+                    else {menu[i].style.left=newLeft+"px";}
+                }
+            });
+            
+            
+            //mouseoever to enlarge menu text
+            for(let i=0; i<menu.length; i++){
+                
+                menu[i].addEventListener("mouseover", function(){
+                    document.getElementById("map").style.visibility="hidden";
+                    menu[i].style.fontSize="3em";
+                    menu[i].style.color="pink";
+                    menu[i].style.width="250px";
+                     document.getElementById("imgs").style.padding="0px";
+                    if(i==0){document.body.style.backgroundColor="yellow";}
+                    else if(i==1){document.body.style.backgroundColor="purple";
+                            document.getElementById("video").style.padding="0px";
+                            document.getElementById("video").style.visibility="visible";
+                            playVid(); }
+                    else if(i==2){document.body.style.backgroundColor="red";}
+                    else if(i==3){document.body.style.backgroundColor="brown";}
+                    else if(i==4){document.body.style.backgroundColor="blue";}
+                    else if(i==5){document.body.style.backgroundColor="gray";}
+                    else{document.body.style.backgroundColor="orange";}
+                    
+                    if(i!=1){
+                        document.getElementById("imgs").style.visibility="visible ";
+                    }else{
+                        
+                    }
+                    menu[i].addEventListener("mouseout", function(){
+                        document.getElementById("map").style.visibility="visible";
+                        pauseVid();
+                        menu[i].style.fontSize="2em";
+                        menu[i].style.color="black";
+                        menu[i].style.width="150px" ;
+                        document.body.style.backgroundColor="white";
+                    document.getElementById("imgs").style.visibility="hidden";
+                        document.getElementById("video").style.visibility="hidden";
+                    });
+                });
+            }
+            
+            //mouseclick to effect on menu
+            //and to show its content in main
+            for(let i=0; i<menu.length; i++){
+                menu[i].addEventListener("click", function(){
+                    menu[i].style.transform="rotate(7deg)" ;
+                    
+                   document.getElementById("padding").style.padding="0px";
+                    //remove click effect
+                    window.setInterval(function(){ 
+                        menu[i].style.transform="none"
+                    }, 1000);
+                    
+                    //hide all the other contents
+                    for(let j=0; j<content.length; j++){
+                        content[j].style.display="none";
+                        
+                    }
+                    
+                    //show the clicked content
+                    content[i].style.display="block";
+                });   
+            } 
+        };
+    </script>
+</head>
+<body>
+    <div id="padding">
+    <h1>Company</h1>
+    <h1>Lectures</h1>
+    <h1>December</h1>
+    <h1>January</h1>
+    <h1>Teachers</h1>
+    <h1>Question</h1>
+    <h1>Email </h1>
+    </div>
+    <video id="video" width="320" height="176">
+    <source src="imgs/2.mp4" type="video/mp4">
+    </video>
+    <img id = "imgs" src="imgs/1.jpg" >
+    <img id = "map" src="imgs/map01.png" >
+    <div id="content">
+        <div>Company Content</div>
+        <div>Lectures Table</div>
+        <div>December Lecture</div>
+        <div>January Lecture</div>
+        <div>Teachers Profiles</div>
+        <div>Q and A table</div>
+        <div>Send Email Form</div>
+        
+    </div>
+
+    
+</body>
+</html>

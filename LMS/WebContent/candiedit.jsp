@@ -38,7 +38,15 @@
 		</tr>
 		<tr>
 			<td>상태</td>
-			<td><input type="text" name="status" value="${bean.status }"/></td>
+			<td>
+			<select name="status">
+				<option >선택하세요</option>
+				<option value="상담중">상담중</option>
+				<option value="수강대기">수강대기</option>
+				<option value="수강예정">수강예정</option>
+			</select>
+			</td>
+			<%-- <td><input type="text" name="status" value="${bean.status }"/></td> --%>
 		</tr>
 	</table>
 	<%-- </c:forEach> --%>
