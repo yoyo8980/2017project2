@@ -34,18 +34,8 @@
             var screenW = window.screen.width;
             
             
-            //wheel to move menu left. I offer three styles.
-            
-            //1. by absolute position
-            //use absolute position array
-            //var menuLoci=["0px", "360px", "720px", "1080px", "1440px", "1800px", "2160px", "2520px", "2880px", "3240px"];           
-////            //initialize positions
-           //function actWheel(){
-          // };
              // 휠 변경 김성식 
            
-            //final wheel effect with absolute position
-           // var cnt=menu.length;
                 var wd=screenW/menu.length+200;  
                 var list=new Set();
                 for(var j=0; j<menu.length; j++){
@@ -63,9 +53,8 @@
                 var cnt=0;
             document.addEventListener("wheel", function(e){
                 
-//                cnt++;
                 console.log(lcarr);
-                
+               function actWheel(){ 
                 if(cnt>9){cnt=0;}
                 for(var i=0; i<menu.length; i++){
                     
@@ -74,48 +63,18 @@
                         }else{menu[i].style.left= lcarr[(cnt+i)]+"px";}
                     }
                 cnt++;
+               };
+                console.log(e);
+                var eStamp=e.timeStamp;
+                tStamp+=100; //이쪽 마우스 휠 관련 속도 조정할떄 값 변경
+                if(tStamp<eStamp){
+                    tStamp=eStamp; 
+                    window.setTimeout(actWheel,100); // 이쪽 마우스 휠 관련 속도 조정할떄 값 변경   
+                console.log(window.setTimeout(actWheel,100));
+                }else{tStamp=eStamp+300;} // 이쪽 마우스 휠 관련 속도 조정할떄 값 변경
                 
-//                console.log(e);
-//                console.log(e.wheelDelta);
-//                var eStamp=e.timeStamp;
-//                tStamp+=100; //이쪽 마우스 휠 관련 속도 조정할떄 값 변경
-//                if(tStamp<eStamp){
-//                    tStamp=eStamp; 
-//                    window.setTimeout(actWheel,100); // 이쪽 마우스 휠 관련 속도 조정할떄 값 변경   
-//                }else{tStamp=eStamp+300;} // 이쪽 마우스 휠 관련 속도 조정할떄 값 변경
-//                
                 
             });
-            
-            //alternative1. by random order
-//            document.addEventListener("wheel", function(e){
-//                var randomIdx = new Set();
-//                while(randomIdx.size<7){
-//                    var ridx = Math.floor((Math.random() * 7));
-//                    randomIdx.add(ridx);
-//                }
-//                var rIdxArray = Array.from(randomIdx)
-//                for(var i=0; i<menu.length; i++){
-//                        menu[i].style.left= menuLoci[rIdxArray[i]];
-//                    }
-//            });
-            
-            //alternative2.
-            //by relative position 
-            //warn: change css to relative position and disable initialize section (line 41-43)
-//            document.addEventListener("wheel", function(e){
-//                for(let i=0; i<menu.length; i++){
-//                    var rect = menu[i].getBoundingClientRect();
-//                    var newLeft = rect.left-(150*i)+150;
-//                
-//                
-//                    menu[i].style.left=newLeft+"px";
-//                    if(newLeft>1000){
-//                        menu[i].style.left="-"+(150*i)+"px";
-//                    }    
-//                    
-//                }
-//            });
             
 
             //mouseoever to enlarge menu text
