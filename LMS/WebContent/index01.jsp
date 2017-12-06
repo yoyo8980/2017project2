@@ -7,7 +7,7 @@
 <title>비트캠프</title>
 <style>
         *{
-            overflow: hidden;
+            overflow: initial;
           
         }
         #wrapper{

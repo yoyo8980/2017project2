@@ -1,0 +1,76 @@
+.all{
+		margin: 10px;
+	}
+.all h2, h3{
+		text-align: center;
+	}
+
+.all div{
+		margin-bottom: 5px;
+		margin-left: 90px;
+	}
+.all label{
+		width: 80px;
+		height: 25px;
+		display:inline-block;
+		background-color: darkblue;
+		color:white;
+		text-align: center;
+	
+	}
+.all button{
+		
+		margin-top: 20px;
+		text-align: center;
+		text-decoration: none;
+		display:inline-block;
+		cursor: pointer;
+		border: none;
+		width: 50px;
+		height:25px;
+		margin-left:110px; 
+	}
+.all button:hover{
+		background-color: darkblue;
+		color:white;
+		outline: 0;
+	}
+.all table{
+        overflow: auto;
+       	text-align: center;
+        width: auto;
+        border-top: 1px solid gray;
+        margin: 5px auto;
+    	border-collapse:collapse;
+    }
+.all tr,th,td{
+    	border-bottom:1px solid gray;
+    	padding:3px;
+    }
+
+.all p{
+		text-align: center;
+}
+.all span{
+		margin-left: 140px;
+}
+.com input{
+	margin-left: 50px;
+}
+.view button{
+	margin-left: 50px;
+}
+.lec button{
+	width: 100px;
+	
+}
+.logout{
+	float: right;
+}
+.menu{
+	
+}
+.lmsnavi {
+	
+	
+}

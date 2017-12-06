@@ -6,10 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-	<h1>수정페이지</h1>
-	<div>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
+	<h2>수정페이지</h2>
+	
 		<form method="post">
 			<table>
 				<div>
@@ -20,15 +25,16 @@
 					</tr>							
 				</div>
 				<div>				
-					<select name="hrid">
+						<select name="hrid">
 						<c:forEach items="${list }" var="bean">
 							<option value="${bean.hrid }">${bean.hrid }</option>					
 						</c:forEach>
-					</select>
+						</select>
 				</div>								
 				<div>
 				<c:forEach items="${list }" var="bean">
 					<tr>						
+						<td>${bean.hrid }</td>
 						<td>${bean.hrname }</td>
 						<td>${bean.team }</td>					
 					</tr>
@@ -38,5 +44,6 @@
 			</table>
 		</form>
 	</div>
+	
 </body>
 </html>

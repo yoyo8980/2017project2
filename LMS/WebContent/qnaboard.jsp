@@ -7,10 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
 <h2>QnA 질문 목록</h2>
-	<table border=1>
+	<table>
 		 <tr>
 		   <th>번호</th>
 		   <th>작성자</th>
@@ -41,6 +46,7 @@
 		 </tr>
 		 </c:forEach>
 	</table>
-	<a href="lmsindex.do">메인으로</a>
+	<p><a href="lmsindex.do">메인으로</a></p>
+	</div>
 </body>
 </html>

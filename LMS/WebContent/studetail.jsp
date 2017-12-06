@@ -6,49 +6,53 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>학생상세페이지</title>
+<link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
 </head>
 <body>
 <div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<div id="lmsweb">
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/학생상세조회</div>
-<h1>학생상세페이지</h1>
+<h2>학생상세페이지</h2>
 <form action="studetail.do?sId=${bean.sId }">
 
-	<table border="1">
+	<table>
 		<tr>
-			<td>아이디</td>
+			<th>아이디</th>
 			<td>${bean.sId }</td>
 		</tr>
 		<tr>
-			<td>이름</td>
+			<th>이름</th>
 			<td>${bean.sName }</td>
 		</tr>
 		<tr>
-			<td>생일</td>
+			<th>생일</th>
 			<td>${bean.birth }</td>
 		</tr>
 		<tr>
-			<td>전화번호</td>
+			<th>전화번호</th>
 			<td>${bean.phone }</td>
 		</tr>
 		<tr>
-			<td>이메일</td>
+			<th>이메일</th>
 			<td>${bean.email }</td>
 		</tr>
 		<tr>
-			<td>반</td>
+			<th>반</th>
 			<td>${bean.regclass }</td>
 		</tr>
 		<tr>
-			<td>상태</td>
+			<th>상태</th>
 			<td>${bean.status }</td>
 		</tr>
 	</table>
 </form>
+<span>
 <a href="stuedit.do?sId=${bean.sId }">[수정]</a>
 <a href="studelete.do?sId=${bean.sId }">[삭제]</a>
 <a href="stuview.do">[목록]</a>
+</span>
 </div>
 </body>
 </html>

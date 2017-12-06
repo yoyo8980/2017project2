@@ -6,10 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
 <div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<div id="lmsweb">
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
 <h1>성적관리INDEX</h1>
 <!-- 	<table border="1">
 		

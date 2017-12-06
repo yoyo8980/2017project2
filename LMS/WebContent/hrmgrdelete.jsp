@@ -6,10 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-	<h1>삭제페이지</h1>
-	<div>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
+	<h2>삭제페이지</h2>
 		<form method="get">
 			<table>
 				<tr>
@@ -27,5 +31,6 @@
 			</table>
 		</form>
 	</div>
+	
 </body>
 </html>

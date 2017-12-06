@@ -5,11 +5,13 @@
 <html>
 <head>
 <title>강좌 개설</title>
+<link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
 </head>
 <body>
 <div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<div id="lmsweb">
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/강좌개설</div>
 <p>강좌 개설</p>
 <form id="openLec" action="openlec.do" method="post">
@@ -57,10 +59,12 @@
 		<label for="intro">강의소개</label><br>
 		<textarea name="intro" id="intro" rows=5 cols=30></textarea>
 	</div>
-	<div>
+	<div class="lec">
+	
 		<button type="reset">폼비우기</button>
 		<button type="button" id="preview">미리보기</button>
 		<button type="submit">DB전송</button>
+	
 	</div>			
 </form>
 

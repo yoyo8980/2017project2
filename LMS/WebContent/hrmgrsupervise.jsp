@@ -6,12 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-	<div>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
 		<form action="hrmgrsup.do" method="post">
 			<div>
-  			이름<select name="hrid">
+			<label>이름</label>
+  			<select name="hrid">
     	  			<option>선택하세요</option>
     	  			<c:forEach items="${list }" var="bean">   	  		
           				<option value="${bean.hrid}">${bean.hrid} (${bean.hrname})</option>
@@ -19,23 +24,24 @@
         		</select>
 			</div>
 			<div>
-				<label for="id">WebID 입력</label>
+				<label for="id">WebID</label>
 				<input type="text" name="id" value="${bean.webid }"/>
 			</div>
 			<div>
-				<label for="pw">WebPW 입력</label>
+				<label for="pw">WebPW</label>
 				<input type="text" name="pw"/>
 			</div>
 			<div>
 				<label for="rePw">PW 재입력</label>
 				<input type="text" name="rePw"/>
 			</div>
-			<div>
+			<div class="view">
 				<button type="submit">완료</button>
 				<button type="reset">취소</button>
 			</div>
 		
 		</form>
 	</div>
+	
 </body>
 </html>

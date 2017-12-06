@@ -6,39 +6,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-	<h1>입력페이지</h1>
-	<div>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
+	<h2>입력페이지</h2>
+	
 	
 		<form action="hrmgrinsert.do" method="post">
 			<div>
-				ID:<input type="text" name="webid"/>
+				<label>ID</label>
+				<input type="text" name="webid"/>
 			</div>
 			<div>
-				PW:<input type="text" name="webpw"/>			
+				<label>PW</label>
+				<input type="text" name="webpw"/>			
 			</div>
 			<div>
+				<label>NUM</label>
 				<c:forEach items="${list }" var="bean" begin="6" end="6">
-						NUM:<input type="text" name="hrid" value="${bean.hrid }" readonly="readonly"/>
+						<input type="text" name="hrid" value="${bean.hrid }" readonly="readonly"/>
 				</c:forEach>
 			</div>
 			<div>
-				NAME:<input type="text" name="hrname"/>
+				<label>NAME</label>
+				<input type="text" name="hrname"/>
 			</div>
-			<div> 
-		   Team:<select name="hrteam">
+			<div>
+			<label>부서</label> 
+		   	<select name="hrteam">
 		    	  <option>선택하세요</option>
 		    	  <c:forEach items="${list }" var="bean" begin="0" end="5">   	  		
 		          		<option value="${bean.team}">${bean.team}</option>
 		          </c:forEach>
 		         </select>
          	</div>
-	        <div>               
-				<input type="submit" value="입력" >
-				<input type="submit" value="취소">	
+	        <div class="view">               
+				<button type="submit">입력</button>
+				<button type="submit">취소</button>	
 			</div>
 		</form>
+	
 	</div>
 </body>
 </html>

@@ -6,17 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>현재학생조회페이지</title>
+<link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
-<style type="text/css">
+<script type="text/javascript">
 	
+</script>
+<style type="text/css">
+   
+    
 </style>
 </head>
 <body>
 <div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<div id="lmsweb">
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stuview.do">현재학생조회</a></div>
-<h2>현재학생조회</h2>
-		<table border="1">
+<h2>현재학생조회</h2>   
+		<table >
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -33,7 +39,9 @@
 			</tr>
 		</c:forEach>
 		</table>
-	<a href="stu.do">[목록으로]</a>
-</div>	
+	<p><a href="stu.do">[목록]</a></p>
+		</div>
+	
+		
 </body>
 </html>

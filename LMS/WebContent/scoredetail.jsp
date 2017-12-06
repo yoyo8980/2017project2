@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <style>
 	#scoreid{
@@ -13,9 +15,12 @@
 	}
 </style>
 <body>
-<h1>detail page</h1>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
+<h2>detail page</h2>
 <form action="edit.do" method="post">
-	<table border="1">
+	<table>
 		<tr>
 	          <th>점수아이디</th>
 	          <th>과목</th>
@@ -36,7 +41,11 @@
         </tr>
  	 </c:forEach> 
 	</table>
+	<div>
  <button>수정</button>
+	</div>
+
  </form>
+ </div>
 </body>
 </html>

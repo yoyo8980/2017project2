@@ -6,9 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-	<hi>roll edit page</hi>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
+	<h2>roll edit page</h2>
 	<form action="rollsedit.do" method="post">	
 		<table>
 			<tr>
@@ -41,11 +46,12 @@
 				<input type="hidden" value="${bean.stuname }" name="sname"/>
 			</div>
 		</c:forEach>
-		<div>
+		<div class="view">
 			<button type="submit">수정</button>
 			<button type="reset">취소</button>
 		</div>
 		
 		</form>
+		</div>
 </body>
 </html>

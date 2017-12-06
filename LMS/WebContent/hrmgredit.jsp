@@ -6,8 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/all.css"></link>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
+<div id="lmsweb"  class="all">
 	<form action="hrmgredit.do" method="post">
 		<c:forEach items="${list }" var="bean">
 			<div>
@@ -28,5 +33,6 @@
 			<button type="reset">취소</button>
 		</div>
 	</form>
+	</div>
 </body>
 </html>
