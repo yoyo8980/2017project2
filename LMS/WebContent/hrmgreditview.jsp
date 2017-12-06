@@ -12,18 +12,29 @@
 	<div>
 		<form method="post">
 			<table>
-				<tr>
-					<th>ID</th>
-					<th>이름</th>
-					<th>부서</th>
-				</tr>			
-				<c:forEach items="${list }" var="bean">	
-				<tr>					
-					<td><a href="hrmgr.do?root=edit&hrid=${bean.hrid }">${bean.hrid }</a></td>
-					<td>${bean.hrname }</td>
-					<td>${bean.team }</td>					
-				</tr>
+				<div>
+					<tr>
+						<th>ID</th>
+						<th>이름</th>
+						<th>부서</th>
+					</tr>							
+				</div>
+				<div>				
+					<select name="hrid">
+						<c:forEach items="${list }" var="bean">
+							<option value="${bean.hrid }">${bean.hrid }</option>					
+						</c:forEach>
+					</select>
+				</div>								
+				<div>
+				<c:forEach items="${list }" var="bean">
+					<tr>						
+						<td>${bean.hrname }</td>
+						<td>${bean.team }</td>					
+					</tr>
 				</c:forEach>
+				</div>
+				
 			</table>
 		</form>
 	</div>

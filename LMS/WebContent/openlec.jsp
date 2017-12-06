@@ -5,9 +5,13 @@
 <html>
 <head>
 <title>강좌 개설</title>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-<h1>강좌 개설</h1>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/강좌개설</div>
+<p>강좌 개설</p>
 <form id="openLec" action="openlec.do" method="post">
 	<div>
 		<label for="lecid">강의코드</label>
@@ -107,6 +111,6 @@
 		previewDiv.style.top="50px";
 	});
 </script>
-
+</div>
 </body>
 </html>

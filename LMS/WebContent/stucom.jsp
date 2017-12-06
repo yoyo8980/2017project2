@@ -6,12 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>과거학생조회페이지</title>
+<script src="js/mktwebside.js"></script>
 <style type="text/css">
 	
 </style>
 </head>
 <body>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stucom.do">과거학생조회</a></div>
 <h2>과거학생조회</h2>
 <form action="stugu.do" method="get">
 	<label>조회할 학생 이름을 입력하세요</label><br/>
@@ -40,6 +44,6 @@
 		</c:forEach>
 		</table>
 	 --%>
-	
+</div>	
 </body>
 </html>

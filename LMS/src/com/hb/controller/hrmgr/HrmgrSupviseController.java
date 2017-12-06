@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.controller.index.SessionCheckController;
 import com.hb.model.hrmgr.HrmgrDao;
 
-@WebServlet("/hrmgrsup.do")
+@WebServlet("/hrmgrsup.do") //ÄÚµù ±è¼º½Ä
 public class HrmgrSupviseController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
 		req.setCharacterEncoding("UTF-8");
+		
 		int hrid= Integer.parseInt(req.getParameter("hrid").trim());
 		String id= req.getParameter("id").trim();
 		String pw= req.getParameter("pw").trim();

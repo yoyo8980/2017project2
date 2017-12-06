@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
 <h1>성적관리INDEX</h1>
 <!-- 	<table border="1">
 		
@@ -35,5 +37,6 @@
 	 -->
 	 <a href="scoreadd.do">성적 입력하기</a>
 	 <a href="scoreedit.do">성적 수정하기</a>
+</div>
 </body>
 </html>

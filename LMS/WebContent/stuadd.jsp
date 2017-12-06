@@ -6,10 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>학생추가페이지</title>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-<h1>학생추가페이지</h1>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stuadd.do">학생추가</a></div>
+<h2>학생추가</h2>
 
 <form action="stuadd.do" method="post">
 
@@ -45,5 +49,6 @@
 </div>
 	<button type="submit">입력</button>
 </form>
+</div>
 </body>
 </html>

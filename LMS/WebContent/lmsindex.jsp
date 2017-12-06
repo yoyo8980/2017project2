@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>비트캠프</title>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-<%String team = (String)session.getAttribute("power");
-		session.setAttribute("power", team);%>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<a href="logout.do">logout</a>
 	<table>
 	<div>
         <tr>
@@ -21,7 +22,7 @@
         </tr>
      </div>
      <div>
-     <c:forEach items="${list }" var="bean">   
+     <c:forEach items="${statuslist }" var="bean">   
         <tr>
           <td>${bean.lecId }</td>
           <td>${bean.lecName }</td>
@@ -30,19 +31,19 @@
  	 </c:forEach>
      </div>   
 	</table>
-	<c:set var="power" value="<%=team %>"></c:set>
+	<c:set var="power" value="${sessionScope.power }"></c:set>
 	<c:choose>
 		<c:when test="${power eq 'mgr'}">
 			<div>
 			    <a href="openlec.do">*강좌 개설</a>
 			</div>
 			<div>
-				<a href="rollmgr.do">*출결 관리</a>
+				<a href="roll.do?root=""">*출결 관리</a>
 			</div>
 		</c:when>
 		<c:when test="${power eq 'teach'}">
 			<div>
-				<a href="scoreindex.do">*성적 관리</a>
+				<a href="score.do?root="" ">*성적 관리</a>
 			</div>
 			<div>
 				<a href="stu.do">*학생 관리</a>
@@ -72,10 +73,10 @@
 			    <a href="openlec.do">*강좌 개설</a>
 			</div>
 			<div>
-				<a href="rollmgr.do">*출결 관리</a>
+				<a href="roll.do?root=""">*출결 관리</a>
 			</div>
 			<div>
-				<a href="scoreindex.do">*성적 관리</a>
+				<a href="score.do?root="" ">*성적 관리</a>
 			</div>
 			<div>
 				<a href="stu.do">*학생 관리</a>
@@ -95,6 +96,8 @@
 			</div>
 		</c:when>
 	</c:choose>
-	
+	<p>${sessionScope.teachName }</p>
+	<p>${sessionScope.lecid }</p>
+</div>	
 </body>
 </html>

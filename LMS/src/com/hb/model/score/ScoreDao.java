@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import com.hb.model.score.ScoreDto;
 import com.hb.util.MyOracle;
 
@@ -16,153 +17,72 @@ public class ScoreDao {
 	ArrayList<ScoreDto> slist;
 
 	
-	public ArrayList<ScoreDto> scoreView(){
-		String sql="select * from score";
+	public ArrayList<ScoreDto> scoreView(String stuname,int stuid){ //内爹 辫己侥
+		String editViewSql="select * from score where stuname=? and stuid=?";	
 		conn=MyOracle.getConnection();
-		
 		try{
-			pstmt=conn.prepareStatement(sql);
-			rs=pstmt.executeQuery();
 			slist = new ArrayList<ScoreDto>();
+			pstmt=conn.prepareStatement(editViewSql);
+			pstmt.setString(1, stuname);
+			pstmt.setInt(2, stuid);
+			rs=pstmt.executeQuery();
+			
 			while(rs.next()){
-				ScoreDto bean= new ScoreDto();
-				bean.setScoreid(rs.getInt("scoreid"));
+				ScoreDto bean = new ScoreDto();
+				bean.setSclass(rs.getInt("sclass"));
+				bean.setStuname(rs.getString("stuname"));
 				bean.setSubject(rs.getString("subject"));
 				bean.setStuid(rs.getInt("stuid"));
-				bean.setStuname(rs.getString("stuname"));
-				bean.setSclass(rs.getInt("sclass"));
+				bean.setScoreid(rs.getInt("scoreid"));
 				bean.setScore(rs.getInt("score"));
-				slist.add(bean);				
-			}			
-		}catch(Exception e){
-		}finally{
-			try {
-				if(rs!=null)rs.close();
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+				slist.add(bean);
 			}
-		}
+		}catch(Exception e){
+			e.printStackTrace();
+			}finally{
+					try {
+						if(pstmt!=null)pstmt.close();
+						if(conn!=null)conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+			}
+		
 		return slist;
 	}
 
-	public ArrayList<ScoreDto> scoreView2(){
-		String sql="select * from score";
-		conn=MyOracle.getConnection();
-		try{
-			 pstmt=conn.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			slist = new ArrayList<ScoreDto>();
-			while(rs.next()){
-				ScoreDto bean= new ScoreDto();
-				bean.setScoreid(rs.getInt("scoreid"));
-				bean.setSubject(rs.getString("subject"));
-				bean.setStuid(rs.getInt("stuid"));
-				bean.setStuname(rs.getString("stuname"));
-				bean.setSclass(rs.getInt("sclass"));
-				bean.setScore(rs.getInt("score"));
-				slist.add(bean);				
-			}			
-		}catch(Exception e){
-		}finally{
-			try {
-				if(rs!=null)rs.close();
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return slist;
-	}
 	
-	public ArrayList<ScoreDto> edit(int score, int scoreid) throws SQLException{
-		String sql="update score set score=? where scoreid=?";
+	public void edit(ArrayList paramList) throws SQLException{ //内爹 辫己侥
+		int scoCnt=0;
+		int pstCnt=0;
+		int score;
+		int scoreid;
+		String editSql="update score set score=? where scoreid=?";
+		PreparedStatement pstmt[]= new PreparedStatement[paramList.size()];
 		conn=MyOracle.getConnection();
 	try{
-	
-		pstmt=conn.prepareStatement(sql);
-		pstmt.setInt(1, score);
-		pstmt.setInt(2, scoreid);
-		pstmt.executeUpdate();
+		for(int i=1; i<paramList.size();i++){				
+			score=(int)paramList.get(scoCnt);
+			scoreid=(int)paramList.get(i);
+			
+			pstmt[pstCnt]=conn.prepareStatement(editSql);
+			pstmt[pstCnt].setInt(1, score);
+			pstmt[pstCnt].setInt(2,  scoreid);
+			pstmt[pstCnt].executeUpdate();
+			scoCnt+=2;
+			pstCnt++;
+			i++;	
+		}	
 	}catch(Exception e){
 		e.printStackTrace();
 		}finally{
-			if(pstmt!=null)pstmt.close();
-			if(conn!=null)conn.close();
+			try {
+				for(int i=0; i<paramList.size();i++){
+					if(pstmt[i]!=null)pstmt[i].close();
+				}				
+				if(conn!=null)conn.close();
+			} catch (Exception e2) {
+			}
 		}
-	return slist;
 	}	
-	
-	public ArrayList<ScoreDto> selectOne(int idx){
-		 		System.out.println(idx);
-		 		ArrayList<ScoreDto> slist = new ArrayList<ScoreDto>();
-		 		conn=MyOracle.getConnection();
-		 		try{
-		 			String sql="select * from score where scoreid=?";
-		 			pstmt=conn.prepareStatement(sql);
-		 			pstmt.setInt(1, idx);
-		 			rs=pstmt.executeQuery();
-		 			
-		 			if(rs.next()){
-		 				ScoreDto bean = new ScoreDto();
-		 				bean.setScoreid(rs.getInt("scoreid"));
-		 				bean.setSubject(rs.getString("subject"));
-		 				bean.setStuid(rs.getInt("stuid"));
-		 				bean.setStuname(rs.getString("stuname"));
-		 				bean.setSclass(rs.getInt("sclass"));
-		 				bean.setScore(rs.getInt("score"));
-		 				slist.add(bean);
-		 			}
-		 			System.out.println(slist.size());
-		 			if(rs!=null)rs.close();
-		 			if(pstmt!=null)pstmt.close();
-		 			
-		 		}catch(Exception e){
-		 		}finally{
-		 			try {
-		 				if(rs!=null)rs.close();
-		 				if(pstmt!=null)pstmt.close();
-		 				if(conn!=null)conn.close();
-		 			} catch (SQLException e) {
-		 				e.printStackTrace();
-		 			}
-		 		}
-		 		return slist;
-	 	} 
-		public ArrayList<ScoreDto> selectAll(){
- 		ArrayList<ScoreDto> slist = new ArrayList<ScoreDto>();
- 		conn=MyOracle.getConnection();
- 		try{
- 			String sql="select * from (select * from score order by id desc) where rownum <11";
- 			pstmt=conn.prepareStatement(sql);
- 			rs=pstmt.executeQuery();
- 			
- 			while(rs.next()){
- 				ScoreDto bean = new ScoreDto();
- 				bean.setScoreid(rs.getInt("scoreid"));
- 				bean.setSubject(rs.getString("subject"));
- 				bean.setStuid(rs.getInt("stuid"));
- 				bean.setStuname(rs.getString("stuname"));
- 				bean.setSclass(rs.getInt("sclass"));
- 				bean.setScore(rs.getInt("score"));
- 				slist.add(bean);
- 			}
- 			
- 			if(rs!=null)rs.close();
- 			if(pstmt!=null)pstmt.close();
- 			
- 		}catch(Exception e){
- 		}finally{
- 			try {
- 				if(rs!=null)rs.close();
- 				if(pstmt!=null)pstmt.close();
- 				if(conn!=null)conn.close();
- 			} catch (SQLException e) {
- 				e.printStackTrace();
- 			}
- 		}
- 		return slist;
- 	}
 }

@@ -12,20 +12,32 @@
 	<div>
 	
 		<form action="hrmgrinsert.do" method="post">
-		<c:forEach items="${list }" var="bean" begin="6" end="6">
-				<p>ID:<input type="text" name="hrid" value="${bean.hrid }" readonly="readonly"/></p>
-		</c:forEach>
-			<p>NAME:<input type="text" name="hrname"/></p>	 
-			  
-    Team:<select name="hrteam">
-    	  <option>선택하세요</option>
-    	  <c:forEach items="${list }" var="bean" begin="0" end="5">   	  		
-          		<option value="${bean.team}">${bean.team}</option>
-          </c:forEach>
-        </select>
-                        
-		<input type="submit" value="입력" >
-		<input type="submit" value="취소">	
+			<div>
+				ID:<input type="text" name="webid"/>
+			</div>
+			<div>
+				PW:<input type="text" name="webpw"/>			
+			</div>
+			<div>
+				<c:forEach items="${list }" var="bean" begin="6" end="6">
+						NUM:<input type="text" name="hrid" value="${bean.hrid }" readonly="readonly"/>
+				</c:forEach>
+			</div>
+			<div>
+				NAME:<input type="text" name="hrname"/>
+			</div>
+			<div> 
+		   Team:<select name="hrteam">
+		    	  <option>선택하세요</option>
+		    	  <c:forEach items="${list }" var="bean" begin="0" end="5">   	  		
+		          		<option value="${bean.team}">${bean.team}</option>
+		          </c:forEach>
+		         </select>
+         	</div>
+	        <div>               
+				<input type="submit" value="입력" >
+				<input type="submit" value="취소">	
+			</div>
 		</form>
 	</div>
 </body>

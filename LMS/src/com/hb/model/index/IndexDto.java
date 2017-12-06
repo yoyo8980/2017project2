@@ -1,5 +1,7 @@
 package com.hb.model.index;
 
+import java.sql.Date;
+
 public class IndexDto {
 	
 	private String lecName;
@@ -8,6 +10,11 @@ public class IndexDto {
 	private int hrid;
 	private int lecId;
 	private boolean logChk;
+	private Date ending;
+	private String status;
+	private String tname;
+	private int tid;
+	
 	
 	public IndexDto() {
 	
@@ -47,6 +54,30 @@ public class IndexDto {
 	}
 	public void setTeam(String team) {
 		this.team = team;
+	}
+	public Date getEnding() {
+		return ending;
+	}
+	public void setEnding(Date ending) {
+		this.ending = ending;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getTname() {
+		return tname;
+	}
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+	public int getTid() {
+		return tid;
+	}
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 	
 	

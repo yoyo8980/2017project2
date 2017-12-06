@@ -5,16 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>학생관리페이지</title>
+<script src="js/mktwebside.js"></script>
 <style type="text/css">
 	
 </style>
 </head>
 <body>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stu.do">학생관리</a></div>
 <h2>학생관리</h2>
 	<h3><a href="stuview.do">현재학생조회</a></h3>
 	<h3><a href="stucom.do">과거학생조회</a></h3>
 	<h3><a href="stuadd.do">학생추가</a></h3>
-	
+</div>	
 </body>
 </html>

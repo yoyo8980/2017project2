@@ -6,10 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>이메일 상담</title>
+<title>비트캠프</title>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-<h2>이메일 상담 목록</h2>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/이메일상담</div>
+<p2>이메일 상담 목록</p2>
 	<table border=1>
 		 <tr>
 		   <th>번호</th>
@@ -43,5 +47,6 @@
 		 </c:forEach>
 	</table>
 	<a href="lmsindex.do">메인으로</a>
+</div>	
 </body>
 </html>

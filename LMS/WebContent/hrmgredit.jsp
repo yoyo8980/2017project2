@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="hrmgredit.do">
+	<form action="hrmgredit.do" method="post">
 		<c:forEach items="${list }" var="bean">
 			<div>
 				<label for="hrid">ID</label>

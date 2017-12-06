@@ -6,9 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>이메일 상담 상세</title>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-<h2>이메일 상담 목록</h2>
+<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="board01.do">이메일목록</a></div>
+<p>이메일 상세보기</p>
 	<table border=1>
 		 <tr>
 		   <th>번호</th>
@@ -28,7 +32,7 @@
 		   <td>${bean.content }</td>
 		 </c:forEach>
 	</table>
-	<a href="board01.do">목록으로</a><br>
 	<a href="lmsindex.do">메인으로</a>
+</div>	
 </body>
 </html>
