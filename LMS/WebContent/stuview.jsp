@@ -12,17 +12,24 @@
 	
 </script>
 <style type="text/css">
-   
-    
+    #lmsweb{
+    	overflow: auto;
+    	
+    }
+    #mktweb{
+		position: absolute;
+		width: 100%;
+		z-index: -3;
+	}
 </style>
 </head>
 <body>
 <div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb" class="all" >
 <a href="logout.do" class="logout">logout</a>
-<div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stuview.do">현재학생조회</a></div>
 <h2>현재학생조회</h2>   
-		<table >
+		<table>
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -40,6 +47,13 @@
 		</c:forEach>
 		</table>
 	<p><a href="stu.do">[목록]</a></p>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	
+	
 		</div>
 	
 		
