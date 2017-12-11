@@ -21,10 +21,7 @@ public class CandiDetailController extends HttpServlet{
 		int sId=Integer.parseInt(req.getParameter("sId"));
 		CandiDao dao=new CandiDao();
 		CandiDto bean=dao.CandiDetail(sId);
-		req.setAttribute("bean", bean);
-		
-		
-		
+		req.setAttribute("bean", bean);		
 		
 		
 		

@@ -108,7 +108,7 @@ public class IndexDao {
 		int hrid;
 		boolean loginChk=false;
 		String logChkSql="SELECT HRID FROM IDMGR WHERE WEBID=? AND WEBPW=?";
-		String powerSql="SELECT TEAM FROM HRLIST WHERE HRID=?";
+		String powerSql="SELECT TEAM,HRNAME FROM HRLIST WHERE HRID=?";
 		conn=MyOracle.getConnection();
 		
 		try{
@@ -129,6 +129,7 @@ public class IndexDao {
 				rs2=pstmt2.executeQuery();
 				rs2.next();
 				bean.setTeam(rs2.getString("team"));
+				bean.setPowerName(rs2.getString("hrname"));
 				bean.setHrid(hrid);
 				list.add(bean);
 			}else{

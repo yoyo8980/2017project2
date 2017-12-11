@@ -9,26 +9,19 @@
 <link rel="stylesheet" href="css/index.css"></link>
 <meta name="viewport" content="user-scalable=no,initial-scale=1" />
 <script>
-         window.onload = function(){
-        	var lmsin;//
+         window.addEventListener("load" ,function(){
+        	var lmsin;
         	var menuover;
         	var menuout;
         	var menuclick;
             var menucnt=0; 
-            /* var r=0;
-            var g=0;
-            var b=217; */
+           
             var menuccnt=0; 
             var wheelcnt=0;
             var menubrcnt=0;
             var menubrcnt2=0;
             var precnt=0;
-            function playVid() { //비디오
-                            vid.play() ; 
-                        };
-            function pauseVid() { 
-                            vid.pause(); 
-                        } 
+           
             function reload(){ //새로고침
             	location.reload();
             }
@@ -87,7 +80,7 @@
         
         	 document.getElementById("logo").addEventListener("click",function(){ //lms시스템 오픈.
         		 menubrcnt++;
-        		/*  document.getElementById("god").style.width="100%"; */
+        		
         		 document.getElementById("wrapper").style.transition="0.5s";
         		 document.getElementById("wrapper").style.position="absolute";
         		 document.getElementById("wrapper").style.width="70%";
@@ -95,7 +88,6 @@
                  document.getElementById("padding").style.marginLeft="0px";
                  document.getElementById("padding").style.width="100%";
                  document.getElementById("content").style.marginTop="200px" ;
-                 document.getElementById("imgs").style.paddingLeft="50px";
                  document.getElementById("login").style.visibility="visible";
                  document.getElementById("login").style.height="600px";
                  document.getElementById("login").style.width="30%";
@@ -138,7 +130,7 @@
                               menu[j].style.backgroundColor="transparent" ;
                       		menu[j].style.left=lcarr2[j]+"px";//메뉴위치
                          	 }
-                     }
+                     }     
                      }
                  document.getElementById("logo").addEventListener("click",function(){// lms끌때
                 	 menubrcnt=0;
@@ -152,7 +144,7 @@
                 	 document.getElementById("login").style.width= "0%";
                 	 document.getElementById("login").style.height="0px";
                 	 document.getElementById("login").style.transition="1s";
-                	 document.getElementById("login").style.zIndex="1";
+                	/* document.getElementById("login").style.zIndex="1";  */
                 	 window.location.reload(); //새로고침
                 	 var asd=0; //안씀
                      //메뉴클릭시 위치
@@ -202,16 +194,6 @@
                			document.getElementById("padding").style.marginTop="30px" ;
                		}
                		 
-                    document.getElementById("imgs").style.paddingTop="150px";
-                    document.getElementById("imgs").style.paddingLeft="250px";
-                    document.getElementById("video").style.padding="0px";
-                    if(i!=1){
-                        document.getElementById("imgs").style.visibility="visible";
-                        
-                    }else{
-                        document.getElementById("video").style.visibility="visible";
-                        playVid();
-                    }
                   //remove all preview
                     for(let j=0; j<menu.length; j++){
                     	contentPrev[j].style.display="none";
@@ -231,7 +213,7 @@
                         console.log(e);
       					contentPrev[i].style.left=e.clientX+"px";
                         contentPrev[i].style.top="50px";
-                        contentPrev[i].style.zIndex="0" ;
+                        /* contentPrev[i].style.zIndex="0" ; */
                        /*  contentPrev[i].style.width="200px";
                         contentPrev[i].style.height="300px"; */
                         
@@ -241,8 +223,6 @@
                     	contentPrev[i].style.display="none";
                     	}
                     	document.getElementById("wrapper").style.backgroundColor="white";
-                        document.getElementById("imgs").style.visibility="hidden";
-                        document.getElementById("video").style.visibility="hidden";
                         if(menuccnt==0){
                             document.getElementById("padding").style.marginTop="360px";
                        		}else{
@@ -250,8 +230,6 @@
                        		}
                        			
                         
-                        document.getElementById("imgs").style.paddingTop="0px";
-                        document.getElementById("video").style.paddingTop="0px";
                         if(menucnt>=1){
                              for(let i=0; i<menu.length; i++){
                             menu[i].style.fontSize="1.5em";
@@ -263,7 +241,6 @@
                         menu[i].style.width="160px" ;
                         document.body.style.backgroundColor="white";
                     
-                        document.getElementById("map").style.visibility="hidden";
                     });
                 });
             }
@@ -273,7 +250,7 @@
             	var wd2=screenW/menu.length+10; 
             for(let i=0; i<menu.length; i++){
                 menuclick=menu[i].addEventListener("click", function(e){
-                	precnt++;
+                	 precnt++;
                      menucnt++;
                      menuccnt++ ;
                      wheelcnt++;
@@ -315,6 +292,43 @@
                         	 }
                     }
                     }
+                    var qwe=0; //메뉴바 두줄 만들기
+                    if(menubrcnt2==0){
+                   	 var list=new Set();
+                        for(var j=0; j<menu.length; j++){
+                            var t=wd*[j];
+                            list.add(t); 
+                            
+                        }
+                        var lcarr=Array.from(list);
+                        for(var k=0; k<menu.length; k++){
+                           menu[k].style.left=lcarr[k]+"px";
+                                           
+                            console.log(lcarr[k]) ;  
+                        }
+                        
+                        }else{ //다시 복구
+                        	 wd2=screenW/menu.length+120;
+                             var list2=new Set();
+                             for(var j=0; j<menu.length; j++){
+                                 var t=wd2*[j];
+                                 list2.add(t); 
+                                 
+                             }
+                             var lcarr2=Array.from(list2);
+                             for(let j=0; j<menu.length; j++){
+                            	 if(j>3){ //j[3] 이상일경우 아래로 내리기 2번째줄
+                            		 menu[j].style.backgroundColor="transparent"; // 배경투명.
+                              		menu[j].style.left=lcarr2[qwe]+"px";//메뉴위치
+                              		menu[j].style.top="50px";
+                              		qwe++;
+                            	 }else{
+                            		 //j[3] 아래일경우 1번째줄
+                                 menu[j].style.backgroundColor="transparent" ;
+                         		menu[j].style.left=lcarr2[j]+"px";//메뉴위치
+                            	 }
+                        }     
+                        }
                     //메뉴클릭시 메뉴	
                     menu[i].style.backgroundColor="coral";
                     contentPrev[i].style.display="none";
@@ -322,13 +336,6 @@
                     document.removeEventListener("wheel",actWheel);
                     document.getElementById("padding").style.marginTop="60px";
                     document.getElementById("padding").style.visibility="visible";
-                   
-                    document.getElementById("imgs").style.display="none";
-                    document.getElementById("map").style.display="none";
-                    document.getElementById("video").style.display="none";
-                    
-                    
-                    
                     //remove click effect
                     window.setInterval(function(){ 
                         menu[i].style.transform="none"
@@ -351,30 +358,19 @@
                     contentFull[i].style.overflow="auto";
                 });   
         }
-    };
+    });
     </script>
 </head>
 <body>
-	<!-- <div id="god"> -->
-	<div id="padding2">
-		<c:forEach items="${loadmenu }" var="menulist">
-			<h1>${menulist }</h1>
-		</c:forEach>
-	</div>
+	
 	<div id="wrapper">
 		<a href="startweb.do"><img id="home" src="imgs/logo3.png"></a>
 		<img id="logo" src="imgs/plus.png">
-		<!--LMS시스템 들어가야함.-->
 		<div id="padding">
 			<c:forEach items="${loadmenu }" var="menulist">
 				<h1>${menulist }</h1>
 			</c:forEach>
 		</div>
-
-		<video id="video" width="320" height="176" loop="5"> <source
-			src="imgs/2.mp4" type="video/mp4"></video>
-		<img id="imgs" src="imgs/1.jpg"> <img id="map"
-			src="imgs/map01.png">
 		<div id="content">
 			<c:forEach items="${loadmenu }" var="menulist">
 				<div id="preview">
@@ -400,6 +396,5 @@
 			</div>
 		</form>
 	</div>
-	<!--   </div> -->
 </body>
 </html>

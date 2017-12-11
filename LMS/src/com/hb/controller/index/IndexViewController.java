@@ -14,7 +14,7 @@ import com.hb.model.index.IndexDao;
 import com.hb.model.index.IndexDto;
 
 
-@WebServlet("/lmsindex.do") // ÄÚµù ±è¼º½Ä
+@WebServlet("/lmsindex.do") // ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 public class IndexViewController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -33,14 +33,14 @@ public class IndexViewController extends HttpServlet{
 		
 		if(teamChk==null){
 			if(logChk.get(0).getLogChk()){
-				String team=logChk.get(0).getTeam();					
+				String team=logChk.get(0).getTeam();
+				String powerName=logChk.get(0).getPowerName();
 				session.setAttribute("power", team);
-
+				session.setAttribute("powerName",powerName);
 				if(team.equals("teach")){
 					int tid=(int)logChk.get(0).getHrid();
 					ArrayList<IndexDto> teaChk=dao.teachChk(tid);
-					if(teaChk.get(0).getLogChk()){				
-						session.setAttribute("teachName",teaChk.get(0).getTname());
+					if(teaChk.get(0).getLogChk()){	
 						session.setAttribute("lecid",teaChk.get(0).getLecId());								
 					}
 				}		
@@ -71,30 +71,34 @@ public class IndexViewController extends HttpServlet{
 		String teamChk=(String)session.getAttribute("power");
 		ArrayList<IndexDto> logChk=dao.loginChk(webid,webpw);
 		ArrayList lists=(ArrayList)session.getAttribute("statuslist");	
-		
 		if(teamChk==null){
 			if(logChk.get(0).getLogChk()){
-				String team=logChk.get(0).getTeam();					
+				
+				String team=logChk.get(0).getTeam();
+				String powerName=logChk.get(0).getPowerName();
 				session.setAttribute("power", team);
-
+				session.setAttribute("powerName", powerName);
+				System.out.println(powerName);
 				if(team.equals("teach")){
 					int tid=(int)logChk.get(0).getHrid();
+					
 					ArrayList<IndexDto> teaChk=dao.teachChk(tid);
-					if(teaChk.get(0).getLogChk()){				
-						session.setAttribute("teachName",teaChk.get(0).getTname());
+					if(teaChk.get(0).getLogChk()){			
 						session.setAttribute("lecid",teaChk.get(0).getLecId());								
 					}
 				}		
 				ArrayList<IndexDto> list= dao2.indexView();			
 				session.setAttribute("statuslist", list);		
-				req.getRequestDispatcher("lmsindex.jsp").forward(req, resp);
+				/*req.getRequestDispatcher("lmsindex.jsp").forward(req, resp);*/
+				resp.sendRedirect("lmsindex.jsp");
 				return;
 			}
 			resp.sendRedirect("lmslogin.jsp");
 			return;
 		}
 		if(teamChk!=null){	
-			req.getRequestDispatcher("lmsindex.jsp").forward(req, resp);	
+			/*req.getRequestDispatcher("lmsindex.jsp").forward(req, resp);*/	
+			resp.sendRedirect("lmsindex.jsp");
 		}	
 		
 	}

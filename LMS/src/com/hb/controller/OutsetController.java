@@ -16,12 +16,13 @@ public class OutsetController extends HttpServlet {
 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
 
-	//�뙆�씪 二쇱냼�뒗 upload �뤃�뜑媛� �엳�뒗 臾쇰━�쟻 �쐞移섏씠硫�, �긽�슜�솕�떆�뒗 �넱耳볦꽌踰� �븘�옒�엳怨� �뀒�뒪�듃 以묒뿉�뒗 �븘留� 媛곸옄�쓽 
-	//濡쒖뺄 Git �븘�옒 �샊�� �씠�겢由쎌뒪 �썙�겕 �뤃�뜑 �븘�옒媛� �맗�땲�떎. �뵲�씪�꽌 �뀒�뒪�듃 以묒뿉�뒗 
-	//�씠�겢由쎌뒪 �솕硫댁뿉�꽌 upload �뤃�뜑�쓽 properties瑜� 移섎㈃ �굹�삤�뒗 臾쇰━�쟻 二쇱냼瑜� �쟻怨�
-	//理쒖쥌 war �뙆�씪 諛고룷 �쟾�뿉�뒗 二쇱냼瑜� �넱耳볦쓽 �꽕移� �쐞移� 湲곗��쑝濡� 瑗� 蹂�寃쏀빐�빞 �빀�땲�떎.
-	//File folders = new File("C:/Users/hb/git/HB6_2017_Project2/LMS002/WebContent/upload"); //�븰�썝
-	File folders = new File("C:/Users/hb/git/prjct2/prjct2/LMS/WebContent/upload");
+	
+	//File folders = new File("C:/Users/hb/git/HB6_2017_Project2/LMS002/WebContent/upload"); //회사 테스트시
+	File folders = new File("C:/Users/hb/git/prjct2/prjct2/LMS/WebContent/upload");//집 테스트시
+	//File folders = new File("C:/Tomcat 7.0/webapps/LMS002/upload");
+	///////////////////상용화시는 톰켓의 물리적 위치 기준으로 file 주소 변경/////////////////////////////////////
+
+	
 	String menulist="";
 	if(folders.exists()){
 //		System.out.println(folders.getCanonicalPath());

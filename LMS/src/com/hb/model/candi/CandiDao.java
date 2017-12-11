@@ -12,9 +12,46 @@ public class CandiDao {
 
 	Connection conn=MyOracle.getConnection();
 	PreparedStatement pstmt;
+	PreparedStatement pstmt2;
 	ResultSet rs;
-	
-	public ArrayList<CandiDto> CandiAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
+	ResultSet rs2;
+	public ArrayList<CandiDto> candiStuAddView(){
+		ArrayList<CandiDto> list=null;
+		String sidSql="select max(sid) as sid from stu";
+		String regclassSql="select lecid from lectures where status='opened'";
+		conn=MyOracle.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sidSql);
+			rs=pstmt.executeQuery();
+			list= new ArrayList<CandiDto>();
+			if(rs.next()){
+				CandiDto bean=new CandiDto();
+				bean.setsId(rs.getInt("sId")+1);
+				list.add(bean);
+				pstmt2=conn.prepareStatement(regclassSql);
+				rs2=pstmt2.executeQuery();
+				while(rs2.next()){
+					bean=new CandiDto();
+					bean.setRegclass(rs2.getInt("lecid"));
+					list.add(bean);
+				}
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{	
+				try {
+					if(rs2!=null)rs2.close();
+					if(pstmt2!=null)pstmt2.close();
+					if(rs!=null)rs.close();
+					if(pstmt!=null)pstmt.close();
+					if(conn!=null)conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return list;
+	}
+	public ArrayList<CandiDto> CandiAddView(){//í•™ìƒì¶”ê°€ì‹œ ë²ˆí˜¸ìë™ë¶€ì—¬
 		
 		ArrayList<CandiDto> list=null;
 		String sql="select max(sid) as sid from candi";
@@ -54,12 +91,12 @@ public class CandiDao {
 		}
 		return list;
 		
-	}//±è¼º½ÄÀÌ ÄÚµåÂüÁ¶
+	}//ê¹€ì„±ì‹ì´ ì½”ë“œì°¸ì¡°
 	
 	public void CandiAdd(int sId, String sName, String birth, String phone, String email, String status, int regclass){
 		String addsql="insert into candi values(?,?,to_date(?,'yyyy-mm-dd'),?,?,?,?)";
 		System.out.println(addsql);
-		//ÇĞ»ıÃß°¡
+		//í•™ìƒì¶”ê°€
 		try {
 			pstmt=conn.prepareStatement(addsql);
 			pstmt.setInt(1, sId);
@@ -85,8 +122,40 @@ public class CandiDao {
 			}
 		}
 	}
-	
-	public ArrayList<CandiDto> CandiView(){//ÈÄº¸»ıÁ¶È¸ÆäÀÌÁö
+	public void CandiDelStuAdd(int sId,String sName, String birth, String phone, String email, int regclass,int candiId){
+		String sql="insert into stu values(?,?,to_date(?,'yyyy-mm-dd'),?,?,'ìˆ˜ê°•ì¤‘',?)";
+//		String sql2="update stu set "
+		conn=MyOracle.getConnection();
+		try {
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sId);
+			pstmt.setString(2, sName);
+			pstmt.setString(3, birth);
+			pstmt.setString(4, phone);
+			pstmt.setString(5, email);
+			pstmt.setInt(6, regclass);
+			int returnChk=pstmt.executeUpdate();
+			
+			if(returnChk>0){
+				CandiDelete(candiId);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public ArrayList<CandiDto> CandiView(){//í›„ë³´ìƒì¡°íšŒí˜ì´ì§€
 		ArrayList<CandiDto> list2=null;
 		String sql="select * from candi";
 		
@@ -120,7 +189,7 @@ public class CandiDao {
 		
 	}
 	
-	public CandiDto CandiDetail(int sId){//ÈÄº¸»ı »ó¼¼ÆäÀÌÁö
+	public CandiDto CandiDetail(int sId){//í›„ë³´ìƒ ìƒì„¸í˜ì´ì§€
 		CandiDto bean = new CandiDto();
 		String dsql="select * from candi where sid=?";
 		
@@ -159,7 +228,7 @@ public class CandiDao {
 	 
 	public void CandiEdit(int sId, String sName, String birth, String phone, String email, String status, int regclass){
 		String esql="update candi set sname=?, birth=to_date(?,'yyyy-mm-dd'), phone=?, email=?, status=?, regclass=? where sid=?";
-		//ÈÄº¸»ı ¼öÁ¤ÆäÀÌÁö-¿©±â¼­ status ¼ö°­¿¹Á¤À¸·Î ¹Ù²î¸é »èÁ¦µÇ°í stu Å×ÀÌºí·Î »ğÀÔ
+		//í›„ë³´ìƒ ìˆ˜ì •í˜ì´ì§€-ì—¬ê¸°ì„œ status ìˆ˜ê°•ì˜ˆì •ìœ¼ë¡œ ë°”ë€Œë©´ ì‚­ì œë˜ê³  stu í…Œì´ë¸”ë¡œ ì‚½ì…
 		
 		try {
 			pstmt=conn.prepareStatement(esql);

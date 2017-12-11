@@ -4,16 +4,19 @@ import java.sql.Date;
 
 public class IndexDto {
 	
-	private String lecName;
-	private String team;
 	private int sid;	
 	private int hrid;
 	private int lecId;
-	private boolean logChk;
-	private Date ending;
+	private int tid;
 	private String status;
 	private String tname;
-	private int tid;
+	private String lecName;
+	private String team;
+	private String powerName;
+	private boolean logChk;
+	private Date ending;
+
+	
 	
 	
 	public IndexDto() {
@@ -78,6 +81,12 @@ public class IndexDto {
 	}
 	public void setTid(int tid) {
 		this.tid = tid;
+	}
+	public String getPowerName() {
+		return powerName;
+	}
+	public void setPowerName(String powerName) {
+		this.powerName = powerName;
 	}
 	
 	

@@ -12,19 +12,22 @@
 	
 </script>
 <style type="text/css">
-    #lmsweb{
-    	overflow: auto;
-    	
-    }
-    #mktweb{
+	#mktweb{
 		position: absolute;
 		width: 100%;
-		z-index: -3;
+		z-index:-1;
 	}
+	#lmsweb{
+		float: right;
+		width: 30%;
+		height: 900px;
+		overflow: scroll;
+	}
+	
 </style>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
 <div id="lmsweb" class="all" >
 <a href="logout.do" class="logout">logout</a>
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stuview.do">현재학생조회</a></div>
@@ -47,6 +50,8 @@
 		</c:forEach>
 		</table>
 	<p><a href="stu.do">[목록]</a></p>
+	<br/>
+	<br/>
 	<br/>
 	<br/>
 	<br/>

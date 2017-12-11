@@ -6,17 +6,80 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import com.hb.model.score.ScoreDto;
 import com.hb.util.MyOracle;
 
 public class ScoreDao {
 	Connection conn;
 	PreparedStatement pstmt;
+	PreparedStatement pstmt2;
 	ResultSet rs;
+	ResultSet rs2;
 	ArrayList<ScoreDto> slist;
 
+	public ArrayList<ScoreDto> scoreSubject(){ //코딩 김성식
+		String sql="select * from stu where status='수강중'";
+		conn=MyOracle.getConnection();
+		try{
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			slist = new ArrayList<ScoreDto>();
+			while(rs.next()){
+				ScoreDto bean= new ScoreDto();
+				bean.setStuid(rs.getInt("sid"));
+				bean.setStuname(rs.getString("sname"));
+				bean.setSclass(rs.getInt("regclass"));
+				slist.add(bean);				
+			}
+		}catch(Exception e){
+		}finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return slist;
+	}
 	
+	public void insertScoreCall (ArrayList<String> scorecall,String subject){ //코딩 김성식/ 참조 전대일
+
+		
+		conn=MyOracle.getConnection();
+//		String scoreid = null;
+//		String scoreIdSql="SELECT MAX(scoreid) AS SCOREID FROM SCORE";
+		String insertSql="insert into score(scoreid, sclass, stuid, stuname, score, subject)";
+		try {
+//			pstmt=conn.prepareStatement(scoreIdSql);
+//			rs=pstmt.executeQuery();
+//			if(rs.next()){				
+//				scoreid=Integer.toString(rs.getInt("SCOREID")+1);//Id 번호 자동부여 	
+//			}
+			
+			for(int i=0; i<scorecall.size(); i++){
+				String[] param =scorecall.get(i).split("-");
+				insertSql +=" select 9999, "+param[0]+","+param[1]+","+"'"+param[2]+"', "+param[3]+", '"+subject +"' from DUAL UNION ALL";
+			}
+			System.out.println(insertSql);
+			insertSql=insertSql.substring(0, insertSql.length()-9);
+			pstmt2=conn.prepareStatement(insertSql);
+			pstmt2.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	public ArrayList<ScoreDto> scoreView(String stuname,int stuid){ //코딩 김성식
 		String editViewSql="select * from score where stuname=? and stuid=?";	
 		conn=MyOracle.getConnection();

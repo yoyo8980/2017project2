@@ -19,7 +19,7 @@ public class StuDao {
 	StuDto list3;
 	ArrayList<StuDto> list4;
 	
-public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
+public ArrayList<StuDto> StuAddView(){//í•™ìƒì¶”ê°€ì‹œ ë²ˆí˜¸ìë™ë¶€ì—¬
 		
 		ArrayList<StuDto> list5=null;
 		String sql="select max(sid) as sid from stu";
@@ -62,13 +62,13 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 			pstmt=conn.prepareStatement(sql2);
 			System.out.println(sql2);
 			rs=pstmt.executeQuery();
-			System.out.println("rs¹Ş±â");
+			System.out.println("rsë°›ê¸°");
 			list6=new ArrayList<Integer>();
 			System.out.println(list6);
 			while(rs.next()){
 				System.out.println(rs);
 				list6.add(rs.getInt("lecid"));
-				System.out.println("list6¿¡ lecid³ÖÀ½");
+				System.out.println("list6ì— lecidë„£ìŒ");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -87,7 +87,7 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 		
 	}
 	public ArrayList<StuDto> StuView(){
-		String sql="select * from stu where status='¼ö°­Áß' or status='¼ö°­¿¹Á¤'";
+		String sql="select * from stu where status='ìˆ˜ê°•ì¤‘' or status='ìˆ˜ê°•ì˜ˆì •'";
 		conn=MyOracle.getConnection();
 		try{
 			pstmt=conn.prepareStatement(sql);
@@ -114,11 +114,11 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 		return list;
 	}
 	
-	public ArrayList<StuDto> StuCom(String sName){	//°ú°ÅÇĞ»ıÁ¶È¸
-		String sql2="select sid,sname,birth,status from(select sid,sname,birth,status from stu where status NOT LIKE '%¼ö°­%') where sname=?";
+	public ArrayList<StuDto> StuCom(String sName){	//ê³¼ê±°í•™ìƒì¡°íšŒ
+		String sql2="select sid,sname,birth,status from(select sid,sname,birth,status from stu where status NOT LIKE '%ìˆ˜ê°•%') where sname=?";
 		//System.out.println(sql2);
 		conn=MyOracle.getConnection();
-		//System.out.println("conn¹Ş±â");
+		//System.out.println("connë°›ê¸°");
 		try{
 			pstmt=conn.prepareStatement(sql2);
 			//System.out.println(pstmt);
@@ -189,7 +189,7 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 	}
 	
 	public void Stuadd(int sId,String sName, String birth, String phone, String email, int regclass){
-		String sql="insert into stu values(?,?,to_date(?,'yyyy-mm-dd'),?,?,'¼ö°­Áß',?)";
+		String sql="insert into stu values(?,?,to_date(?,'yyyy-mm-dd'),?,?,'ìˆ˜ê°•ì¤‘',?)";
 //		String sql2="update stu set "
 		conn=MyOracle.getConnection();
 		try {
@@ -264,7 +264,7 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 			pstmt=conn.prepareStatement(sql);
 			System.out.println(sql);
 			pstmt.setString(1, sName);
-			System.out.println("sName ¹Ş¾Æ¿È");
+			System.out.println("sName ë°›ì•„ì˜´");
 			pstmt.setString(2,birth);
 			System.out.println("birth");
 			pstmt.setString(3, phone);
@@ -276,7 +276,7 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 			pstmt.setString(6, status);
 			System.out.println("status");
 			pstmt.setInt(7, sId);
-			System.out.println("sid¹Ş¾Æ¿È.");
+			System.out.println("sidë°›ì•„ì˜´.");
 			pstmt.executeUpdate();
 			System.out.println("executeUpdate");
 			System.out.println(sql);
@@ -310,7 +310,7 @@ public ArrayList<StuDto> StuAddView(){//ÇĞ»ıÃß°¡½Ã ¹øÈ£ÀÚµ¿ºÎ¿©
 			pstmt=conn.prepareStatement(sql);
 			System.out.println(sql);
 			pstmt.setInt(1, sId);
-			System.out.println("sid¹Ş±â");
+			System.out.println("sidë°›ê¸°");
 			pstmt.executeUpdate();
 			System.out.println("sql");
 		} catch (SQLException e) {

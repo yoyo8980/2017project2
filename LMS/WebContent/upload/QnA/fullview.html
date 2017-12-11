@@ -2,32 +2,73 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비트캠프</title>
+<style>
+.repls{
+	font-size: 0.7em;
+	text-align: left;
+}
+</style>
+<script type="text/javascript">
+var xhr;
+var listTable;
+
+function http(url,callback){
+	xhr=new XMLHttpRequest();
+	if(callback)xhr.onreadystatechange=callback;
+	xhr.open("get", url, true);
+	xhr.send();
+}
+
+function getList() {
+	if(xhr.readyState==4 && xhr.status==200){
+		var msg=xhr.responseText;
+		console.log(msg);
+		var json=JSON.parse(msg);
+		var arr=json.qnalist;
+		
+		listTable.innerHTML="<tr><th>글번호</th><th>글내용</th><th>댓글수</th></tr>";
+		for(var i=0; i<arr.length; i++){
+			listTable.innerHTML+="<tr><td>"+arr[i].qid+"</td><td>"+arr[i].qtext+"</td><td>"+arr[i].repcnt+"</td></tr>";
+		}
+		
+		rows=document.querySelectorAll("#QnAPosition>table>tbody:nth-child(1)~tbody");
+		for(var i=0; i<rows.length; i++){
+			rows[i].addEventListener("click",selectOne);
+		}
+	}
+}
+
+function selectOne() {
+	var target=this.querySelector("td");
+	var qid=target.innerText;
+	http("mktQnAdetail.do?qid="+qid, function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var msg=xhr.responseText;
+			console.log(msg);
+			var json=JSON.parse(msg);
+			var arr=json.replist;
+			
+			for(var i=0; i<arr.length; i++){
+				target.nextSibling.nextSibling.innerHTML+="<p class='repls'>답변:"+arr[i].aname+"_"+arr[i].atext+"</p>";
+			}
+		}
+	});
+}
+
+window.addEventListener('load', function(){
+	
+	listTable=document.querySelector("#QnAPosition>table");
+	http("mktwebQnA.do",getList);
+});
+
+
+</script>
 </head>
 <body>
-<p>궁금하신 사항을 물어보세요</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
-<p>QnA form</p>
+<p>QnA 리스트</p>
+<div id="QnAPosition">
+<table></table>
+</div>
+</body>
 </html>
