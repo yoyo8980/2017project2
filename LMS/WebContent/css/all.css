@@ -27,9 +27,9 @@
 		display:inline-block;
 		cursor: pointer;
 		border: none;
-		width: 50px;
+		width: 70px;
 		height:25px;
-		margin-left:110px; 
+		margin-left:30px; 
 	}
 .all button:hover{
 		background-color: darkblue;
@@ -68,11 +68,3 @@
 .logout{
 	float: right;
 }
-.menu{
-	
-}
-.lmsnavi {
-	
-	
-}
- 

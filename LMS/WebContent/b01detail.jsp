@@ -5,14 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>이메일 상담 상세</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
+<style type="text/css">
+	#mktweb{
+		position: absolute;
+		width: 100%;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}
+</style>
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
-<div id="lmsweb"  class="all">
+<div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="board01.do">이메일목록</a></div>
 <h2>이메일 상세보기</h2>
 	<table>
@@ -34,7 +52,9 @@
 		   <td>${bean.content }</td>
 		 </c:forEach>
 	</table>
-	<p><a href="lmsindex.do">메인으로</a></p>
+	<div>
+	<a href="lmsindex.do">메인으로</a>
+	</div>
 </div>	
 </body>
 </html>

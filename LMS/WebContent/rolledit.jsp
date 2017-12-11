@@ -5,15 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
+<style type="text/css">
+	#mktweb{
+		position: absolute;
+		width: 100%;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}
+</style>
 <script src="js/mktwebside.js"></script>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
-<div id="lmsweb"  class="all">
-	<h2>roll edit page</h2>
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb" class="all">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do"> LMS </a><a href="roll.do?root="""> /출결 관리 </a> /출석부 수정 </div>
+	<h3>출석부 수정</h3>
 	<form action="rollsedit.do" method="post">	
 		<table>
 			<tr>
@@ -46,12 +65,12 @@
 				<input type="hidden" value="${bean.stuname }" name="sname"/>
 			</div>
 		</c:forEach>
-		<div class="view">
+		<div>
 			<button type="submit">수정</button>
 			<button type="reset">취소</button>
 		</div>
 		
 		</form>
-		</div>
+</div>
 </body>
 </html>

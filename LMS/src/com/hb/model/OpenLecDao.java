@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
+
+import org.apache.catalina.connector.Response;
+
 import com.hb.util.MyOracle;
 import com.hb.model.TeacherListDto;
 
@@ -130,6 +134,7 @@ public class OpenLecDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		} finally {
 			try {
 				if(rs!=null)rs.close();

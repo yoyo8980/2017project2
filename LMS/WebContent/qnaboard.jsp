@@ -6,21 +6,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
+<style type="text/css">
+	#mktweb{
+		position: absolute;
+		width: 100%;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}
+</style>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
-<div id="lmsweb"  class="all">
-<h2>QnA 질문 목록</h2>
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb" class="all">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/QnA관리</div>
+<h2>Questions 목록</h2>
 	<table>
 		 <tr>
 		   <th>번호</th>
 		   <th>작성자</th>
 		   <th>내용</th>
-		 </tr>
+		 </tr> 
 		 <c:forEach items="${questionList }" var="bean">
 		 <tr>
 		   <td><a href="qnadetail.do?idx=${bean.qnaid }">${bean.qnaid  }</a></td>
@@ -46,7 +65,9 @@
 		 </tr>
 		 </c:forEach>
 	</table>
-	<p><a href="lmsindex.do">메인으로</a></p>
+	<div>
+	<a href="lmsindex.do">메인으로</a>
 	</div>
+</div>	
 </body>
 </html>

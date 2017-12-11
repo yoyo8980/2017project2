@@ -5,22 +5,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>과거학생상세페이지</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
 <style type="text/css">
 	#mktweb{
 		position: absolute;
 		width: 100%;
-		z-index: -3;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
 	}
 </style>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
 <div id="lmsweb" class="all">
-<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/과거학생상세조회</div>
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stu.do">학생관리</a>/과거학생상세조회</div>
 <h2>과거학생상세페이지</h2>
 <form action="stugudetail.do?sId=${bean.sId }">
 
@@ -55,8 +66,8 @@
 		</tr>
 	</table>
 </form>
-<p><a href="stucom.do">[조회]</a></p>
-<p><a href="stu.do">[목록]</a></p>
+<a href="stucom.do">[조회]</a>
+<a href="stu.do">[목록]</a>
 </div>
 </body>
 </html>

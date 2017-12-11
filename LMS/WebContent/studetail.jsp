@@ -5,20 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>학생상세페이지</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
-<script src="js/mktwebside.js"></script>
 <style type="text/css">
 	#mktweb{
 		position: absolute;
 		width: 100%;
-		z-index: -3;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}
+	div>a{
+		margin-left:35px;
 	}
 </style>
+<script src="js/mktwebside.js"></script>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/학생상세조회</div>
 <h2>학생상세페이지</h2>
@@ -26,40 +40,40 @@
 
 	<table>
 		<tr>
-			<th>아이디</th>
+			<td>아이디</td>
 			<td>${bean.sId }</td>
 		</tr>
 		<tr>
-			<th>이름</th>
+			<td>이름</td>
 			<td>${bean.sName }</td>
 		</tr>
 		<tr>
-			<th>생일</th>
+			<td>생일</td>
 			<td>${bean.birth }</td>
 		</tr>
 		<tr>
-			<th>전화번호</th>
+			<td>전화번호</td>
 			<td>${bean.phone }</td>
 		</tr>
 		<tr>
-			<th>이메일</th>
+			<td>이메일</td>
 			<td>${bean.email }</td>
 		</tr>
 		<tr>
-			<th>반</th>
+			<td>반</td>
 			<td>${bean.regclass }</td>
 		</tr>
 		<tr>
-			<th>상태</th>
+			<td>상태</td>
 			<td>${bean.status }</td>
 		</tr>
 	</table>
 </form>
-<span>
+<div>
 <a href="stuedit.do?sId=${bean.sId }">[수정]</a>
 <a href="studelete.do?sId=${bean.sId }">[삭제]</a>
 <a href="stuview.do">[목록]</a>
-</span>
+</div>
 </div>
 </body>
 </html>

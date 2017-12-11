@@ -17,8 +17,8 @@ public class ScoreDao {
 	ResultSet rs2;
 	ArrayList<ScoreDto> slist;
 
-	public ArrayList<ScoreDto> scoreSubject(){ //ÄÚµù ±è¼º½Ä
-		String sql="select * from stu where status='¼ö°­Áß'";
+	public ArrayList<ScoreDto> scoreSubject(){ //ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
+		String sql="select * from stu where status='ìˆ˜ê°•ì¤‘'";
 		conn=MyOracle.getConnection();
 		try{
 			pstmt=conn.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class ScoreDao {
 		return slist;
 	}
 	
-	public void insertScoreCall (ArrayList<String> scorecall,String subject){ //ÄÚµù ±è¼º½Ä/ ÂüÁ¶ Àü´ëÀÏ
+	public void insertScoreCall (ArrayList<String> scorecall,String subject){ //ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½/ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		
 		conn=MyOracle.getConnection();
@@ -55,7 +55,7 @@ public class ScoreDao {
 //			pstmt=conn.prepareStatement(scoreIdSql);
 //			rs=pstmt.executeQuery();
 //			if(rs.next()){				
-//				scoreid=Integer.toString(rs.getInt("SCOREID")+1);//Id ¹øÈ£ ÀÚµ¿ºÎ¿© 	
+//				scoreid=Integer.toString(rs.getInt("SCOREID")+1);//Id ï¿½ï¿½È£ ï¿½Úµï¿½ï¿½Î¿ï¿½ 	
 //			}
 			
 			for(int i=0; i<scorecall.size(); i++){
@@ -80,7 +80,7 @@ public class ScoreDao {
 		}
 		
 	}
-	public ArrayList<ScoreDto> scoreView(String stuname,int stuid){ //ÄÚµù ±è¼º½Ä
+	public ArrayList<ScoreDto> scoreView(String stuname,int stuid){ //ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 		String editViewSql="select * from score where stuname=? and stuid=?";	
 		conn=MyOracle.getConnection();
 		try{
@@ -115,7 +115,7 @@ public class ScoreDao {
 	}
 
 	
-	public void edit(ArrayList paramList) throws SQLException{ //ÄÚµù ±è¼º½Ä
+	public void edit(ArrayList paramList) throws SQLException{ //ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 		int scoCnt=0;
 		int pstCnt=0;
 		int score;

@@ -10,8 +10,30 @@
 <link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
 <style type="text/css">
-	
-#mktweb{
+	#addtb{
+		margin: 10px;
+	}
+	#addtb div{
+		margin-bottom: 5px;
+	}
+	#addtb label{
+		width: 65px;
+		display:inline-block;
+		background-color: darkblue;
+		color:white;
+		text-align: center;
+	}
+	#addtb button{
+		margin-left: 100px;
+		margin-top: 20px;
+		text-align: center;
+	}
+	#addtb button:hover{
+		background-color: darkblue;
+		color:white;
+		outline: 0;
+	}
+	#mktweb{
 		position: absolute;
 		width: 100%;
 		z-index: 0 ;
@@ -28,56 +50,52 @@
 		height: 0px;
 		width: 0px;
 	}	
-	.all button{
-		margin-left: 80px;
-	}
 </style>
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
 <div id="lmsweb" class="all">
-<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stu.do">학생관리</a>/<a href="stuadd.do">학생추가</a></div>
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stuadd.do">학생추가</a></div>
 <h2>학생추가</h2>
 
-
-<form action="stuadd.do" method="post">
-
+<div id="addtb">
+<form action="candistudeladd.do" method="post">
 <div>
 	<label for="sid">아이디</label>
-	<c:forEach items="${bean }" var="bean2" begin="0" end="0">
-		<input type="text" name="sId" value="${bean2.sId }" readonly="readonly"/>
+	<c:forEach items="${list }" var="bean" begin="0" end="0">
+		<input type="text" name="sId" value="${bean.sId }" readonly="readonly"/>
 	</c:forEach>
 </div>
 <div>
 	<label for="sname">이름</label>
-	<input type="text" name="sName" required/>
+	<input type="text" name="sName" value="${sName}" readonly="readonly"/>
 </div>
 <div>
 	<label for="birth">생일</label>
-	<input type="date" name="birth" required/>
+	<input type="text" name="birth" value="${birth }" readonly="readonly"/>
 </div>
 <div>
 	<label for="phone">전화번호</label>
-	<input type="phone" name="phone" required/>
+	<input type="phone" name="phone" value="${phone }" readonly="readonly"/>
 </div>
 <div>
 	<label for="email">이메일</label>
-	<input type="email" name="email" required/>
+	<input type="email" name="email" value="${email }" readonly="readonly"/>
 </div>
+
 <div>
 	 <label>반</label>
-	 <select name="regclass">
+	 <select name="regclass" required>
 		<option>수업중인 반</option>
-		<c:forEach items="${bean2 }" var="bean3">
-			<option value="${bean3 }">${bean3 }</option> 
+		<c:forEach items="${list}" var="bean2" begin="1" end="${list.size() }">
+			<option value="${bean2.regclass}">${bean2.regclass}</option> 
 		</c:forEach> 	
 	</select>
 </div>
-<div>
+	<input type="hidden" value="${candiId }" name="candiId">
 	<button type="submit">입력</button>
-</div>
 </form>
 </div>
-
+</div>
 </body>
 </html>

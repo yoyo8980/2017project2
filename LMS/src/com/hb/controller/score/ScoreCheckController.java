@@ -13,7 +13,7 @@ import com.hb.controller.index.SessionCheckController;
 import com.hb.model.score.ScoreDao;
 import com.hb.model.score.ScoreDto;
 
-@WebServlet("/scorechecked.do") // ÄÚµù ±è¼º½Ä
+@WebServlet("/scorechecked.do") // ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 public class ScoreCheckController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -34,6 +34,7 @@ public class ScoreCheckController extends HttpServlet{
 
 		ArrayList<ScoreDto> checkList= dao.scoreView(stuname,stuid);
 		req.setAttribute("list", checkList);
-		req.getRequestDispatcher("scorecheck.jsp").forward(req, resp);
+		resp.sendRedirect("scorecheck.jsp");
+		//req.getRequestDispatcher("scorecheck.jsp").forward(req, resp);
 	}
 }

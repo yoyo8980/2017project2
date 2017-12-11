@@ -5,21 +5,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>후보생조회페이지</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
 
 <style type="text/css">
-	
+	#mktweb{
+		position: absolute;
+		width: 100%;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}	
 </style>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
-<div id="lmsweb"  class="all">
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candiview.do">후보생 조회</a></div>
 <h2>후보생조회</h2>
-		<table>
+		<table border="1">
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -36,7 +51,7 @@
 			</tr>
 		</c:forEach>
 		</table>
-	<p><a href="candi.do">[목록]</a></p>
+	<a href="candi.do">[목록으로]</a>
 </div>
 </body>
 </html>

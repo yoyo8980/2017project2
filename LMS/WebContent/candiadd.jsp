@@ -6,15 +6,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>후보생 추가 페이지</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
 <script src="js/mktwebside.js"></script>
-
+<style type="text/css">
+	#mktweb{
+		position: absolute;
+		width: 100%;
+		z-index: 0 ;
+	}
+	#lmsweb{
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
+	}
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}
+</style>
 </head>
 <body>
-<div id="mktweb"><c:import url="index01.jsp"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
-<div id="lmsweb"  class="all">
+<div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candiadd.do">후보생추가</a></div>
 <h2>후보생추가페이지</h2>
 
@@ -28,23 +45,22 @@
 </div>
 <div>
 	<label for="sname">이름</label>
-	<input type="text" name="sName"/>
+	<input type="text" name="sName" required/>
 </div>
 <div>
 	<label for="birth">생일</label>
-	<input type="date" name="birth" />
+	<input type="date" name="birth" required/>
 </div>
 <div>
 	<label for="phone">전화번호</label>
-	<input type="phone" name="phone" />
+	<input type="phone" name="phone" required/>
 </div>
 <div>
 	<label for="email">이메일</label>
-	<input type="email" name="email" />
+	<input type="email" name="email" required/>
 </div>
 <div>
-	<label>상태</label> 
-	<select name="status">
+	상태 <select name="status" required>
 	<option>선택하세요</option>
 	<c:forEach items="${bean }" var="bean2">
 		<option value="${bean2.status }">${bean2.status }</option>
@@ -58,9 +74,7 @@
 	<label for="regclass">반</label>
 	<input type="number" name="regclass" value="9999" readonly="readonly"/>
 </div>
-<div>
 	<button type="submit">입력</button>
-</div>
 </form>
 </div>
 </body>

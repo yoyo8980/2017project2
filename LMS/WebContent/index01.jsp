@@ -35,7 +35,7 @@
             var screenW = window.innerWidth;
             var contentPrev = document.querySelectorAll("#content > div:nth-child(odd)");
             var contentFull = document.querySelectorAll("#content > div:nth-child(even)");
-            var wd=screenW/menu.length+150; //메뉴위치 절대값
+            var wd=screenW/menu.length+200; //메뉴위치 절대값
             
         // 메뉴위치
             var list=new Set();
@@ -89,9 +89,10 @@
                  document.getElementById("padding").style.width="100%";
                  document.getElementById("content").style.marginTop="200px" ;
                  document.getElementById("login").style.visibility="visible";
-                 document.getElementById("login").style.height="600px";
+                 document.getElementById("login").style.position= "relative";
+                 document.getElementById("login").style.height="900px";
                  document.getElementById("login").style.width="30%";
-                 document.getElementById("login").style.marginLeft= "1200px";
+                 
                  document.getElementById("login").style.float="right";
                  document.getElementById("login").style.overlow="visible" ;
                  
@@ -354,7 +355,7 @@
                     contentFull[i].style.top="200px";
                     contentFull[i].style.zIndex="1";
                     contentFull[i].style.height="600px";
-                    contentFull[i].style.width="100%";
+                    contentFull[i].style.width="90%";
                     contentFull[i].style.overflow="auto";
                 });   
         }

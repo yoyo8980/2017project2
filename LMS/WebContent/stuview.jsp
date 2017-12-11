@@ -5,34 +5,59 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>현재학생조회페이지</title>
+<title>비트캠프</title>
 <link rel="stylesheet" href="css/all.css"></link>
-<script src="js/mktwebside.js"></script>
-<script type="text/javascript">
-	
-</script>
 <style type="text/css">
 	#mktweb{
 		position: absolute;
 		width: 100%;
-		z-index:-1;
+		z-index: 0 ;
 	}
 	#lmsweb{
-		float: right;
-		width: 30%;
-		height: 900px;
-		overflow: scroll;
+		position: relative;
+		float: right ;
+		width: 30% ;
+		z-index: 0 ;
 	}
-	
+	#login{
+		margin-left:0px;
+		margin-top:0px;
+		height: 0px;
+		width: 0px;
+	}
+	/* #stutb>table{
+        overflow: auto;
+       	text-align: center;
+        width: auto;
+        border-top: 1px solid gray;
+        margin: 5px auto;
+    	border-collapse:collapse;
+    }
+    #stutb> tr,th,td{
+    	border-bottom:1px solid gray;
+    	padding:3px;
+    }
+    h2{
+    	text-align:center;
+    } */
 </style>
+<script src="js/mktwebside.js"></script>
+<script type="text/javascript">
+	/* document.getElementById('stutb').onscroll=function(){
+        console.log("scrolling");
+        document.get
+    }; */
+</script>
+
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<div id="lmsweb" class="all" >
-<a href="logout.do" class="logout">logout</a>
-<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stuview.do">현재학생조회</a></div>
-<h2>현재학생조회</h2>   
-		<table>
+<div id="lmsweb" class="all">
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stu.do">학생관리</a>/<a href="stuview.do">현재학생조회</a></div>
+<h2>현재학생조회</h2>
+		<!-- <div id="stutb"> -->
+		    
+		<table >
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -49,18 +74,10 @@
 			</tr>
 		</c:forEach>
 		</table>
-	<p><a href="stu.do">[목록]</a></p>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	
-	
+		<br/>
+	<a href="stu.do">[목록으로]</a>
 		</div>
 	
-		
+	<!-- 	</div> -->
 </body>
 </html>
