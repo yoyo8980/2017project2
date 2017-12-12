@@ -35,8 +35,8 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
+<a href="logout.do" class="logout">logout</a>
 <p>${sessionScope.powerName } 님 환영합니다.</p>
 <p>${sessionScope.power } 팀</p>
 <h2>현재 운영중 강좌</h2>

@@ -31,14 +31,17 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
+<a href="logout.do" class="logout">logout</a>
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stu.do">학생관리</a>/<a href="stucom.do">과거학생조회</a></div>
 <h2>과거학생조회</h2>
 <form action="stugu.do" method="get">
-	<label>조회할 학생 이름을 입력하세요</label><br/>
+	<p>조회할 학생 이름을 입력하세요</p><br/>
+<div>
 	<input type="text" name="sName" required>
 	<button type="submit">조회</button>
+</div>
+
 </form>
 		<%-- <table border="1">
 			<tr>

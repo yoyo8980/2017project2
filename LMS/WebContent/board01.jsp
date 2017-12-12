@@ -31,8 +31,8 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
+<a href="logout.do" class="logout">logout</a>
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/이메일상담</div>
 <h2>이메일 상담 목록</h2>
 	<table>

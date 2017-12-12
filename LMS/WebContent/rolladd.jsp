@@ -30,10 +30,10 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
+<a href="logout.do" class="logout">logout</a>
 <div class="lmsnavi">현재위치: <a href="lmsindex.do"> LMS </a> /<a href="roll.do?root=""">출결 관리 </a> /출석부 입력 </div>
-	<hi>roll add page</hi>
+	<h2>roll add page</h2>
 </div>
 </body>
 </html>

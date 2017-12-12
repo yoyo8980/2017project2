@@ -74,8 +74,8 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
+<a href="logout.do" class="logout">logout</a>
 <div class="lmsnavi">현재위치: <a href="lmsindex.do"> LMS </a>&nbsp/&nbsp<a href="score.do?root=""">성적 관리 </a> /성적 입력 </div>
 <c:set var="power" value="${sessionScope.power }"></c:set>
 <c:choose>

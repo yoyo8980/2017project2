@@ -31,8 +31,8 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
-<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
+<a href="logout.do" class="logout">logout</a>
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/출결 관리</div>
 	<!--<p><a class="a" href="roll.do?root=addview">[출석부 입력]</a></p>  -->
 	<p><a class="a" href="rollcall.do">출석부 입력</a></p>
