@@ -32,6 +32,7 @@
 <c:set value="${sessionScope.power }" var="teamNullChk"></c:set>
 <c:if test="${!empty teamNullChk }">
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/계정관리</div>
 	<p><a class="a" href="hrmgr.do?root=add">[직원입력]</a></p>

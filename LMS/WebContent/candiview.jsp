@@ -31,10 +31,11 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candiview.do">후보생 조회</a></div>
 <h2>후보생조회</h2>
-		<table border="1">
+		<table>
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -51,7 +52,9 @@
 			</tr>
 		</c:forEach>
 		</table>
+		<div>
 	<a href="candi.do">[목록으로]</a>
+		</div>
 </div>
 </body>
 </html>

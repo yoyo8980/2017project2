@@ -25,21 +25,7 @@
 		height: 0px;
 		width: 0px;
 	}
-	/* #stutb>table{
-        overflow: auto;
-       	text-align: center;
-        width: auto;
-        border-top: 1px solid gray;
-        margin: 5px auto;
-    	border-collapse:collapse;
-    }
-    #stutb> tr,th,td{
-    	border-bottom:1px solid gray;
-    	padding:3px;
-    }
-    h2{
-    	text-align:center;
-    } */
+	
 </style>
 <script src="js/mktwebside.js"></script>
 <script type="text/javascript">
@@ -52,6 +38,7 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="stu.do">학생관리</a>/<a href="stuview.do">현재학생조회</a></div>
 <h2>현재학생조회</h2>

@@ -31,6 +31,7 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candiadd.do">후보생추가</a></div>
 <h2>후보생추가페이지</h2>
@@ -60,7 +61,8 @@
 	<input type="email" name="email" required/>
 </div>
 <div>
-	상태 <select name="status" required>
+	<label>상태</label>
+	<select name="status" required>
 	<option>선택하세요</option>
 	<c:forEach items="${bean }" var="bean2">
 		<option value="${bean2.status }">${bean2.status }</option>
@@ -74,7 +76,9 @@
 	<label for="regclass">반</label>
 	<input type="number" name="regclass" value="9999" readonly="readonly"/>
 </div>
+<div>
 	<button type="submit">입력</button>
+</div>
 </form>
 </div>
 </body>

@@ -30,12 +30,13 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candiedit.do">후보생수정</a></div>
 <h2>후보생 수정페이지</h2>
 <form action="candiedit.do" method="post">
 <%-- 	<c:forEach items="${bean }" var="bean"> --%>
-	<table border="1">
+	<table>
 		<tr>
 			<td>아이디</td>
 			<td><input type="text" name="sId" value="${bean.sId }" readonly="readonly"/></td>
@@ -74,7 +75,9 @@
 		</tr>
 	</table>
 	<%-- </c:forEach> --%>
+	<div>
 	<button type="submit">완료</button>
+	</div>
 </form>
 </div>
 </body>

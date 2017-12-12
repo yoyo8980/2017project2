@@ -30,10 +30,11 @@
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do"> LMS </a><a href="score.do?root="""> /성적 관리 </a> /성적 수정 </div>
 	<h3>성적 수정</h3>
-	<form action="score.do" method="post">
+	<form action="score.do" method="get">
 		<div>
 			<label for="stuname">이름</label>
 			<input type="text" name="stuname" required/>

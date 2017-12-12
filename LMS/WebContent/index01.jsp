@@ -15,7 +15,7 @@
         	var menuout;
         	var menuclick;
             var menucnt=0; 
-           
+           	
             var menuccnt=0; 
             var wheelcnt=0;
             var menubrcnt=0;
@@ -48,7 +48,7 @@
             for(var k=0; k<menu.length; k++){
                menu[k].style.left=lcarr[k]+"px";
                                
-                console.log(lcarr[k]);  
+                //console.log(lcarr[k]);  
             }
          // 마우스휠 -김성식
         var tStamp=0;
@@ -80,7 +80,7 @@
         
         	 document.getElementById("logo").addEventListener("click",function(){ //lms시스템 오픈.
         		 menubrcnt++;
-        		
+        	
         		 document.getElementById("wrapper").style.transition="0.5s";
         		 document.getElementById("wrapper").style.position="absolute";
         		 document.getElementById("wrapper").style.width="70%";
@@ -92,7 +92,6 @@
                  document.getElementById("login").style.position= "relative";
                  document.getElementById("login").style.height="900px";
                  document.getElementById("login").style.width="30%";
-                 
                  document.getElementById("login").style.float="right";
                  document.getElementById("login").style.overlow="visible" ;
                  
@@ -108,7 +107,7 @@
                      for(var k=0; k<menu.length; k++){
                         menu[k].style.left=lcarr[k]+"px";
                                         
-                         console.log(lcarr[k]) ;  
+                         //console.log(lcarr[k]) ;  
                      }
                      
                      }else{ //다시 복구
@@ -211,7 +210,7 @@
                     
                         contentPrev[i].style.opacity="0.5";
                         contentPrev[i].style.position="absolute";
-                        console.log(e);
+                        //console.log(e);
       					contentPrev[i].style.left=e.clientX+"px";
                         contentPrev[i].style.top="50px";
                         /* contentPrev[i].style.zIndex="0" ; */
@@ -305,7 +304,7 @@
                         for(var k=0; k<menu.length; k++){
                            menu[k].style.left=lcarr[k]+"px";
                                            
-                            console.log(lcarr[k]) ;  
+                            //console.log(lcarr[k]) ;  
                         }
                         
                         }else{ //다시 복구
@@ -365,8 +364,16 @@
 <body>
 	
 	<div id="wrapper">
-		<a href="startweb.do"><img id="home" src="imgs/logo3.png"></a>
-		<img id="logo" src="imgs/plus.png">
+		<a href="/LMS002"><img id="home" src="imgs/logo3.png"></a>
+ 		<c:set var="power" value="${sessionScope.power }"></c:set>
+		<c:choose>
+			<c:when test="${power eq null}">
+				<img id="logo" src="imgs/plus.png">
+ 			</c:when>
+ 			<c:otherwise>
+ 				<img id="logo">
+ 			</c:otherwise>
+ 		</c:choose>
 		<div id="padding">
 			<c:forEach items="${loadmenu }" var="menulist">
 				<h1>${menulist }</h1>

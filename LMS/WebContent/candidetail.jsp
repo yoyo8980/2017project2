@@ -37,11 +37,12 @@ input.submitLink {
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
+<a href="logout.do" class="logout">logout</a>
 <div id="lmsweb" class="all">
 <div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/후보생상세페이지</div>
 <h2>후보생 상세페이지</h2>
-<form action="candistuaddview.do" method="post">
-	<table border="1">
+<form action="candistuaddview.do" method="get">
+	<table>
 		<tr>
 			<td>아이디</td>
 			<td>${bean.sId }</td>
@@ -77,11 +78,12 @@ input.submitLink {
 <input type="hidden" value="${bean.birth }"name="birth">
 <input type="hidden" value="${bean.phone }"name="phone">
 <input type="hidden" value="${bean.email }"name="email">
-
+<div>
 <a href="candiedit.do?sId=${bean.sId }">[수정]</a>
 <a href="candidelete.do?sId=${bean.sId }">[삭제]</a>
 <a href="candiview.do">[목록]</a>
 <input type=submit value="[입학]" class="submitLink">
+</div>
 </form>
 </div>
 </body>
