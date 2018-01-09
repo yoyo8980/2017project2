@@ -18,12 +18,6 @@ public class ScoreCheckController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
 		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		SessionCheckController scc= new SessionCheckController();
 		if(scc.sessionChk(req, resp)){return;}
@@ -34,7 +28,6 @@ public class ScoreCheckController extends HttpServlet{
 
 		ArrayList<ScoreDto> checkList= dao.scoreView(stuname,stuid);
 		req.setAttribute("list", checkList);
-		resp.sendRedirect("scorecheck.jsp");
-		//req.getRequestDispatcher("scorecheck.jsp").forward(req, resp);
+		req.getRequestDispatcher("scorecheck.jsp").forward(req, resp);
 	}
 }

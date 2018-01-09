@@ -55,7 +55,7 @@ public ArrayList<StuDto> StuAddView(){//학생추가시 번호자동부여
 	
 	public ArrayList<Integer> StuAddView2(){
 		ArrayList<Integer> list6=null;
-		String sql2="select lecid from lectures where status='opened'";
+		String sql2="select lecid from lectures where status='opened' or status='waiting'";
 		conn=MyOracle.getConnection();
 		
 		try {

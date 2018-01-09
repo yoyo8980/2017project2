@@ -66,11 +66,12 @@ table.type08 td {
 				}
 				,'success':function(){
 					$('#successMsg').html("<h1>상담 이메일 전송이 완료되었습니다. 비트캠프 담당자 확인 후 연락드리겠습니다.</h1>");
-					//ajax 성공후 메뉴바가 안보인다. 아마 화면이 복잡해서 그런듯한데
-					//일단 이렇게 돌려놓는다. 하지만 이런식이라면 비동기의 의미가 줄어드는 느낌.
+					//처음에는 startweb.do가 welcom xml 에 등록되어 페이지 전체를 리로딩해버려 비동기 특성을 볼 수 없었다.
+					//지금은 welcome xml 을 lmsindex(session 로그아웃이면 어차피 같은 도착지이지만)로 바꾸었더니
+					//비동기 특성을 알 수 있음. 그럼에도 아래처럼 2.5초 이후 돌림
 					setTimeout(function(){ 
 						window.location.replace('startweb.do'); 
-					}, 2000); 
+					}, 2500); 
 				}
 			});
 		});
@@ -105,7 +106,7 @@ table.type08 td {
     </tr>
 <tr>
         <th scope="row">내용</th>
-        <td><textarea name="content" id="content" rows=20 cols=70></textarea></td>
+        <td><textarea name="content" id="content" rows=4 cols=70></textarea></td>
     </tr>
 
 </table>

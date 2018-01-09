@@ -27,13 +27,31 @@
 		height: 0px;
 		width: 0px;
 	}
+	@MEDIA screen and (max-width: 767px) {
+	#mktweb{
+		display: none;
+	}
+	#lmsweb{
+		float: left;
+		width: 90%;
+		height: 500px;
+		overflow: scroll;
+	}
+	.all a{
+		margin-left:0px;
+	}
+	div.lmsnavi{
+	margin-left: 0px;
+	margin-top: 25px;
+	}
+}	
 </style>
 </head>
 <body>
 <div id="mktweb"><c:import url="startweb.do"  charEncoding="utf-8"></c:import></div>
 <div id="lmsweb" class="all">
 <a href="logout.do" class="logout">logout</a>
-<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candiadd.do">후보생추가</a></div>
+<div class="lmsnavi">현재위치: <a href="lmsindex.do">LMS</a>/<a href="candi.do">후보생관리</a>/<a href="candiadd.do">후보생추가</a></div>
 <h2>후보생추가페이지</h2>
 
 <form action="candiadd.do" method="post">

@@ -14,37 +14,14 @@ import com.hb.model.score.ScoreDao;
 import com.hb.model.score.ScoreDto;
 
 
-@WebServlet("/score.do")  // ÄÚµù ±è¼º½Ä
+@WebServlet("/score.do")  // ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 public class ScoreViewController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-		String root=req.getParameter("root");
-		SessionCheckController scc= new SessionCheckController();
-		if(scc.sessionChk(req, resp)){return;}
-		
-		if(root.equals("add")){
-			
-		}else if(root.equals("addview")){
-			
-		}else if(root.equals("edit")){
-			
-		}else if(root.equals("editview")){
-			
-		}else if(root.equals("check")){
-			
-		}else if(root.equals("checkview")){
-			
-		}
-	
-		req.getRequestDispatcher("score"+root+".jsp").forward(req, resp);
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
 		String root=req.getParameter("root");
 		SessionCheckController scc= new SessionCheckController();
 		if(scc.sessionChk(req, resp)){return;}
@@ -59,7 +36,6 @@ public class ScoreViewController extends HttpServlet{
 			ScoreDao dao= new ScoreDao();
 			ArrayList<ScoreDto> editList= dao.scoreView(stuname, stuid);
 			req.setAttribute("list", editList);
-		
 		}else if(root.equals("editview")){
 			
 		}else if(root.equals("check")){
@@ -67,6 +43,7 @@ public class ScoreViewController extends HttpServlet{
 		}else if(root.equals("checkview")){
 			
 		}
+	
 		req.getRequestDispatcher("score"+root+".jsp").forward(req, resp);
 	}
 }

@@ -13,20 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.controller.index.SessionCheckController;
 import com.hb.model.candi.CandiDao;
 import com.hb.model.candi.CandiDto;
 @WebServlet("/candistuaddview.do")
 public class CandiStuAddController extends HttpServlet{
+	
+	SessionCheckController scc= new SessionCheckController();
+	boolean seChk;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
+		
 		CandiDao dao = new CandiDao();
 		ArrayList<CandiDto> addviewlist = dao.candiStuAddView();
 		
@@ -44,6 +45,12 @@ public class CandiStuAddController extends HttpServlet{
 	
 		req.setAttribute("list", addviewlist);
 		req.getRequestDispatcher("candistuadd.jsp").forward(req, resp);
+
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 
 	}
 }

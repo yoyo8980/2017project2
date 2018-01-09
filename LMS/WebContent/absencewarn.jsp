@@ -27,6 +27,25 @@
 		height: 0px;
 		width: 0px;
 	}
+	@MEDIA screen and (max-width: 767px) {
+	#mktweb{
+		display: none;
+	}
+	#lmsweb{
+		float: left;
+		width: 90%;
+		height: 500px;
+		overflow: scroll;
+	}
+	.all a{
+		margin-left:0px;
+	}
+	div.lmsnavi{
+	margin-left: 0px;
+	margin-top: 25px ;
+	}
+	
+}	
 </style>
 </head>
 <body>

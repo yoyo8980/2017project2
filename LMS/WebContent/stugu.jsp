@@ -21,6 +21,7 @@
 		float: right ;
 		width: 30% ;
 		z-index: 0 ;
+		overflow-y: scroll;
 	}
 	#login{
 		margin-left:0px;
@@ -28,6 +29,24 @@
 		height: 0px;
 		width: 0px;
 	}
+	@MEDIA screen and (max-width: 767px) {
+	#mktweb{
+		display: none;
+	}
+	#lmsweb{
+		float: left;
+		width: 90%;
+		height: 500px;
+		overflow: scroll;
+	}
+	.all a{
+		margin-left:0px;
+	}
+	div.lmsnavi{
+	margin-left: 0px;
+	margin-top: 25px ;
+	}
+}	
 </style>
 </head>
 <body>
@@ -38,7 +57,7 @@
 <h2>과거학생조회목록</h2>
 <form action="stugu.do">
 	
-	<table border="1">
+	<table>
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -56,7 +75,7 @@
 		
 		</table>
 	</form>
-	<a href="stucom.do">[뒤로]</a>
+	<div><a href="stucom.do">[뒤로]</a></div>
 </div>
 </body>
 </html>

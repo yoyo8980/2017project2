@@ -4,9 +4,10 @@ window.addEventListener("load", function(){
 		var lmsweb = document.querySelector("#lmsweb");
 		
 		document.getElementById("wrapper").style.width="70%";
-       document.getElementById("wrapper").style.float="left" ;
+        document.getElementById("wrapper").style.float="left";
         document.getElementById("padding").style.marginLeft="0px";
         document.getElementById("content").style.marginTop="200px";
+        document.getElementById("imgs").style.paddingLeft="50px";
         
         lmsweb.style.width="30%";
         lmsweb.style.marginLeft= "1300px";

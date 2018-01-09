@@ -16,13 +16,21 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+import com.hb.controller.index.SessionCheckController;
 import com.hb.model.score.ScoreDao;
 import com.hb.model.score.ScoreDto;
 @WebServlet("/scorecall.do")
-public class ScoreCallController extends HttpServlet{ //코딩 김성식/ 참조 전대일
+public class ScoreCallController extends HttpServlet{
+	
+	SessionCheckController scc= new SessionCheckController();
+	boolean seChk;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
 		ScoreDao scoreDao=new ScoreDao(); 
 		ArrayList<ScoreDto> score= scoreDao.scoreSubject();
 		
@@ -39,6 +47,9 @@ public class ScoreCallController extends HttpServlet{ //코딩 김성식/ 참조 전대일
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
 		
 		Enumeration<String> paramNames = req.getParameterNames();
 		Map paramMap = new HashMap<String, String>();

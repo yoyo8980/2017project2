@@ -14,17 +14,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.controller.index.SessionCheckController;
 import com.hb.model.roll.RollCallDao;
 import com.hb.model.roll.RollDao;
 import com.hb.model.roll.RollDto;
 
 @WebServlet("/rollcall.do")
 public class RollCallController extends HttpServlet{
-	
+	SessionCheckController scc= new SessionCheckController();
+	boolean seChk;
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
-	
+	seChk = scc.sessionChk(req, resp);	
+	if(seChk){return;}
+
 	RollCallDao rollDao=new RollCallDao(); 
 	ArrayList<RollDto> roll=rollDao.todayRoll();
 	
@@ -42,6 +46,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+	seChk = scc.sessionChk(req, resp);	
+	if(seChk){return;}
+
 	req.setCharacterEncoding("UTF-8");
 	
 	Enumeration<String> paramNames = req.getParameterNames();
@@ -52,23 +59,22 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		String name	= paramNames.nextElement().toString();
 		String value = req.getParameter(name);
 		paramMap.put(name, value);
-		//System.out.print(name+":");
-		//System.out.println(value);
+		System.out.print(name+":");
+		System.out.println(value);
 	}
 	System.out.println("--------------------");
 	ArrayList<String> rollCallData = new ArrayList<String>();; 
 	String classChker = (String) paramMap.get("lecidchk");
-	//System.out.println("A "+classChker);
+	System.out.println("A "+classChker);
 	Iterator<String> keys = paramMap.keySet().iterator();
 	while(keys.hasNext()) {
 		String key=keys.next();
-		//System.out.println("°¨ "+key);
 		String keyChker=key.substring(0, 4);
-		//System.out.println("B "+keyChker);
+		//System.out.println("B"+keyChker);
 		String value=(String) paramMap.get(key);
 		if(keyChker.equals(classChker)){
 			key+=value;
-			//System.out.println(key);
+			System.out.println(key);
 			rollCallData.add(key);
 		}
 	}

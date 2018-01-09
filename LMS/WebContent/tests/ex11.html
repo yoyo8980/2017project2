@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <style>
+        *{
+            overflow: hidden;
+          
+        }
+        #wrapper{
+            position: absolute;
+            width: 100%;
+            margin: 0 auto;
+            height: 800px;
+            transition: 1s;
+        }
+        
+        #logo{
+            position: relative;
+            float: right;
+        }
+        #logo:hover{
+            width: 200px;
+            height: 60px;
+            
+        }
+        h1{
+           color: aqua;
+            align-items: center;
+            width: 160px;
+            display: inline-block;
+            
+            
+            font-size: 2em;
+            position: relative;
+            left: 0px;
+            transition: 0.5s;
+            cursor: pointer;
+            text-align: center;
+            /* cf. transition: width 0.5s makes it rugh */ 
+        }
+        #content{
+            margin-top: 140px;
+            
+        }
+        #content>div{
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+	#padding{
+        position: absolute;
+		padding-top: 360px;
+        margin-left: 220px;
+	z-index: 1;
+		transition: 1s;
+        align-content: stretch;
+	}
+         
+	#imgs{
+        position: relative;
+        visibility:hidden;
+        padding-top: 600px;
+        padding-left: 250px;
+        width: 1100px;
+        height: 600px;
+        z-index:-1 ;
+        transition: 0.5s;
+	}
+       
+        #video{
+            position: absolute;
+            visibility: hidden;
+            padding-top: 600px;
+            width: 1100px;
+            height: 600px;
+            z-index:-1 ;
+            transition: 0.5s;
+        }
+        #map{
+            position: absolute;
+            visibility: hidden;
+            width: 1100px;
+	        height: 600px;
+        }
+        #login{
+            position: absolute;
+            margin-left: 2000px;
+            margin-top: 300px;
+            visibility: hidden;
+            transition: 1s;
+        }
+	 </style>
+    <script>
+         
+        
+        window.onload = function(){
+            var menucnt=0; 
+            function playVid() { 
+                            vid.play(); 
+                        };
+            function pauseVid() { 
+                            vid.pause(); 
+                        } 
+            
+            var vid = document.getElementById("video");
+            var menu = document.getElementsByTagName("h1");
+            var content = document.querySelectorAll("#content > div");
+            var screenW = window.screen.width;
+            
+            //initialize positions
+            var leftLocus=0;
+            for(let i=0; i<menu.length; i++){
+                menu[i].style.left=leftLocus+"px";
+                leftLocus+10 ;
+            }
+            
+            //wheel to move menu left
+            document.addEventListener("wheel", function(){
+                for(let i=0; i<menu.length; i++){
+                    var rect = menu[i].getBoundingClientRect();
+                    var newLeft = rect.left+10;
+                    if(newLeft>1200){menu[i].style.left="-1200px";}
+                    else {menu[i].style.left=newLeft+"px";}
+                }
+            });
+            
+             document.getElementById("logo").addEventListener("click",function(){
+                 document.getElementById("wrapper").style.width="70%";
+                 document.getElementById("wrapper").style.float="left";
+                 document.getElementById("padding").style.marginLeft="0px";
+                 document.getElementById("content").style.marginTop="200px";
+                 document.getElementById("imgs").style.paddingLeft="50px";
+                 document.getElementById("login").style.visibility="visible";
+                 document.getElementById("login").style.width="30%";
+                 document.getElementById("login").style.marginLeft= "1300px";
+                 document.getElementById("login").style.float="right";
+                 });
+            //mouseoever to enlarge menu text
+            for(let i=0; i<menu.length; i++){
+               
+                menu[i].addEventListener("mouseover", function(){
+                    document.getElementById("map").style.visibility="hidden";
+                    menu[i].style.fontSize="3em";
+                    menu[i].style.color="pink";
+                    menu[i].style.width="250px";
+                    document.getElementById("imgs").style.paddingTop="150px";
+                    document.getElementById("imgs").style.paddingLeft="250px";
+                    document.getElementById("video").style.padding="0px";
+                    if(i!=1){
+                        document.getElementById("imgs").style.visibility="visible";
+                        
+                    }else{
+                        document.getElementById("video").style.visibility="visible";
+                        playVid();
+                    }
+                    menu[i].addEventListener("mouseout", function(){
+                        document.getElementById("imgs").style.visibility="hidden";
+                        document.getElementById("video").style.visibility="hidden";
+                        document.getElementById("imgs").style.paddingTop="0px";
+                        document.getElementById("video").style.paddingTop="0px";
+                        if(menucnt>=1){
+                             for(let i=0; i<menu.length; i++){
+                            menu[i].style.fontSize="1.5em";
+                             }
+                        }else{
+                        menu[i].style.fontSize="2em";
+                        }
+                        menu[i].style.color="aqua";
+                        menu[i].style.width="160px" ;
+                        document.body.style.backgroundColor="white";
+                    
+                        document.getElementById("map").style.visibility="hidden";
+                    });
+                });
+            }
+            
+            //mouseclick to effect on menu
+            //and to show its content in main
+            for(let i=0; i<menu.length; i++){
+               
+                menu[i].addEventListener("click", function(){
+                     menucnt++;
+                    menu[i].style.transform="rotate(7deg)" ;
+                    for(let j=0; j<menu.length; j++){
+                        menu[j].style.backgroundColor="white";
+                    }
+                    menu[i].style.backgroundColor="green";
+                    
+                    document.getElementById("padding").style.padding="20px";
+                    document.getElementById("imgs").style.display="none";
+                    document.getElementById("map").style.display="none";
+                    document.getElementById("video").style.display="none";
+                   
+                    
+                    //remove click effect
+                    window.setInterval(function(){ 
+                        menu[i].style.transform="none"
+                    }, 1000);
+                    
+                    //hide all the other contents
+                    for(let j=0; j<content.length; j++){
+                        content[j].style.display="none";
+                        
+                    }
+                    
+                    //show the clicked content
+                    content[i].style.display="block";
+                });   
+            } 
+        };
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <img id="logo" src="imgs/header02.png"><!--LMS시스템 들어가야함.-->
+    <div id="padding">
+    <h1>Company</h1>
+    <h1>Lectures</h1>
+    <h1>December</h1>
+    <h1>January</h1>
+    <h1>Teachers</h1>
+    <h1>Question</h1>
+    <h1>Email </h1>
+    </div>
+    <video id="video" width="320" height="176" loop="5">
+    <source src="imgs/2.mp4" type="video/mp4">
+    </video>
+    <img id = "imgs" src="imgs/1.jpg" >
+    <img id = "map" src="imgs/map01.png" >
+    <div id="content">
+        <div><p>Company Content</p></div>
+        <div>Lectures Table</div>
+        <div>December Lecture</div>
+        <div>January Lecture</div>
+        <div>Teachers Profiles</div>
+        <div>Q and A table</div>
+        <div>Send Email Form</div>
+        <div>login Form</div>
+    </div>
+</div>
+    <div id="login">
+    <form action="lmsindex.do" method="post">
+        아이디<input type="text" value="아이디" id="id"><br/>
+        비밀번호<input type="text" value="비밀번호" id="pw"><br/>
+        <button>접속</button>
+    </form>
+        
+    </div>
+</body>
+</html>

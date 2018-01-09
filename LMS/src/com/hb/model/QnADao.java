@@ -149,4 +149,32 @@ public class QnADao {
 		return alist;
 	} //method end	
 	
+	public int nextQid(){
+		int nextQid=0;
+		conn=MyOracle.getConnection();
+		try{
+			String sql="select max(id) as sid from qnaque";
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				nextQid=(rs.getInt("sid")+1);
+			}
+			
+			
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			
+		}catch(Exception e){
+		}finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return nextQid;
+	} //method end
 }

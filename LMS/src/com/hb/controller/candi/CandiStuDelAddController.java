@@ -8,12 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.controller.index.SessionCheckController;
 import com.hb.model.candi.CandiDao;
 @WebServlet("/candistudeladd.do")
 public class CandiStuDelAddController extends HttpServlet{
+
+		SessionCheckController scc= new SessionCheckController();
+		boolean seChk;
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
 		req.setCharacterEncoding("UTF-8");
 		int sId=Integer.parseInt(req.getParameter("sId"));
 		int regclass=Integer.parseInt(req.getParameter("regclass"));

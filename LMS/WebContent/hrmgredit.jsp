@@ -26,6 +26,24 @@
 		height: 0px;
 		width: 0px;
 	}
+	@MEDIA screen and (max-width: 767px) {
+	#mktweb{
+		display: none;
+	}
+	#lmsweb{
+		float: left;
+		width: 90%;
+		height: 500px;
+		overflow: scroll;
+	}
+	.all a{
+		margin-left:0px;
+	}
+	div.lmsnavi{
+	margin-left: 0px;
+	margin-top: 25px ;
+	}
+}	
 </style>
 </head>
 <body>
@@ -35,7 +53,9 @@
 <div class="lmsnavi">현재위치: <a href="lmsindex.do"> LMS </a><a href="hrmgr.do?root="""> /계정 관리 </a> /직원 수정 </div>
 	<h2>직원 수정</h2>
 	<form action="hrmgredit.do" method="post">
+		
 		<c:forEach items="${list }" var="bean">
+		
 			<div>
 				<label for="hrid">ID</label>
 				<input type="text" name="hrid" value="${bean.hrid }" readonly="readonly"/>

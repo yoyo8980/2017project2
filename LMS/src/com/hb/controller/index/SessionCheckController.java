@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class SessionCheckController {  // ÄÚµù ±è¼º½Ä
+public class SessionCheckController {  // ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 	HttpSession session;
 	String power;
 	public boolean sessionChk(HttpServletRequest req, HttpServletResponse resp) throws IOException{
@@ -15,22 +15,26 @@ public class SessionCheckController {  // ÄÚµù ±è¼º½Ä
 		power=(String)session.getAttribute("power");
 		
 		if(power==null){
-			resp.sendRedirect("lmslogin.jsp");
+			System.out.println("sesion test");
+			resp.sendRedirect("startweb.do");
 			return true;
+		}else{
+			System.out.println("sesion test2323");
+			return false;	
 		}
-		return false;
 	}
 	public boolean powerChk(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		session =req.getSession();
 		power=(String)session.getAttribute("power");
 		
-		boolean pwChk = power!=null&&power.equals("master"); // ¿©±â¼­ ±ÇÇÑ °Ë»ç ÇØ¼­ Æ®·ç°¡ 
-															// ³ª¿À¸é ÇØ´ç ±â´É ÆäÀÌÁö ÀÌµ¿ÇÏ°ÔµÊ
+		boolean pwChk = power!=null&&power.equals("master"); // ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½Ø¼ï¿½ Æ®ï¿½ç°¡ 
+															// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï°Ôµï¿½
 		
-		if(pwChk==false){ // ÆÞ½ºµÇ¸é ¿¡·¯ÆäÀÌÁö·Î ÀÌµ¿ÀÌÁö¸¸ ÀÓ½Ã·Î lmsindex ÀÌµ¿
+		if(pwChk==false){ // ï¿½Þ½ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½Ã·ï¿½ lmsindex ï¿½Ìµï¿½
 			resp.sendRedirect("lmsindex.do");
 			return true;
+		}else{
+			return false;	
 		}
-		return false;
 	}
 }

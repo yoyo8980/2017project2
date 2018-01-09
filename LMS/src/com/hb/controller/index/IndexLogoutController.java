@@ -9,13 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/logout.do") // ÄÚµù ±è¼º½Ä
+@WebServlet("/logout.do") // ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 public class IndexLogoutController extends HttpServlet{
 	HttpSession session;
+	SessionCheckController scc= new SessionCheckController();
+	boolean seChk;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");	
+		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
 		session = req.getSession();
 		String power=(String)session.getAttribute("power");
 		
@@ -27,12 +31,14 @@ public class IndexLogoutController extends HttpServlet{
 		session.removeAttribute("power");
 		session.removeAttribute("statuslist");
 		session.invalidate();
-		resp.sendRedirect("./lmsindex.do");	
+		resp.sendRedirect("lmsindex.do");	
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");	
+		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
 		session = req.getSession();
 		String power=(String)session.getAttribute("power");
 		if(power.equals("teach")){
@@ -41,6 +47,6 @@ public class IndexLogoutController extends HttpServlet{
 		}
 		session.removeAttribute("power");
 		session.removeAttribute("statuslist");
-		resp.sendRedirect("./lmsindex.do");
+		resp.sendRedirect("lmsindex.do");
 	}
 }

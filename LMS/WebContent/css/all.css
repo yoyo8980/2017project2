@@ -1,11 +1,11 @@
 .all{
 	margin: 10px;
-
+ 
 	}
 .all h2, h3{
 		text-align: center;
 	}
-
+ 
 .all div{
 		margin-bottom: 5px;
 		margin-left: 90px;
@@ -48,7 +48,7 @@
     	border-bottom:1px solid gray;
     	padding:3px;
     }
-
+ 
 .all p{
 		text-align: center;
 }

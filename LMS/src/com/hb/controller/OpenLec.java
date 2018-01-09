@@ -18,10 +18,18 @@ import com.hb.model.OpenLecDao;
 
 @WebServlet("/openlec.do")
 public class OpenLec extends HttpServlet {
-	
+	SessionCheckController scc= new SessionCheckController();
+	boolean seChk;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+//		////
+//		pwChk = scc.powerChk(req, resp);
+		seChk = scc.sessionChk(req, resp);
+		if(seChk){return;}
+//		////
+		
 		OpenLecDao bean = new OpenLecDao();
 		
 		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -39,19 +47,25 @@ public class OpenLec extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
+//		////
+//		pwChk = scc.powerChk(req, resp);
+//		seChk = scc.sessionChk(req, resp);
+//		if(seChk){return;}
+//		////
+				
 		resp.setCharacterEncoding("utf-8");
 		req.setCharacterEncoding("utf-8");
 		
-		//Æû¿¡ ÀÔ·ÂµÈ °ªÀ» ÇÑ¹ø¿¡ ¹Þ¾Æ ¿Í¼­ ¸Ê¿¡ ´ãÀº µÚ Dao ÀÇ ¸Þ¼Òµå ÀÎÀÚ·Î ´øÁ®¹ö¸°´Ù.
-		//ÂüÁ¶: https://okky.kr/article/109172
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½ ï¿½Í¼ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Dao ï¿½ï¿½ ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		//ï¿½ï¿½ï¿½ï¿½: https://okky.kr/article/109172
 		
-		// ÆÄ¶ó¹ÌÅÍ ÀÌ¸§
+		// ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 		Enumeration<String> paramNames = req.getParameterNames();
 
-		// ´ë»ó ¸Ê
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½
 		Map paramMap = new HashMap<String, String>();
 
-		// ¸Ê ÀúÀå
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		while(paramNames.hasMoreElements()) {
 			String name	= paramNames.nextElement().toString();
 			String value	= req.getParameter(name);
@@ -61,7 +75,7 @@ public class OpenLec extends HttpServlet {
 		OpenLecDao dao = new OpenLecDao();
 		dao.pushForm(paramMap);
 		resp.sendRedirect("lmsindex.do");
-		//°­ÀÇ µî·ÏÇÏ¸é sqlplus ·Î µî·ÏµÇ´Â °Ç È®ÀÎÇß´Âµ¥, lmsindex sql ¹® ¾÷µ¥ÀÌÆ®(waiting Æ÷ÇÔ) ÈÄ È®ÀÎ ÇÊ¿ä.
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ sqlplus ï¿½ï¿½ ï¿½ï¿½ÏµÇ´ï¿½ ï¿½ï¿½ È®ï¿½ï¿½ï¿½ß´Âµï¿½, lmsindex sql ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®(waiting ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ È®ï¿½ï¿½ ï¿½Ê¿ï¿½.
 	}
 
 }

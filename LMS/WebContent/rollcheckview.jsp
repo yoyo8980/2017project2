@@ -25,6 +25,24 @@
 		height: 0px;
 		width: 0px;
 	}
+	@MEDIA screen and (max-width: 767px) {
+	#mktweb{
+		display: none;
+	}
+	#lmsweb{
+		float: left;
+		width: 90%;
+		height: 500px;
+		overflow: scroll;
+	}
+	.all a{
+		margin-left:0px;
+	}
+	div.lmsnavi{
+	margin-left: 0px;
+	margin-top: 25px ;
+	}
+}	
 </style>
 <script src="js/mktwebside.js"></script>
 <script type="text/javascript">
@@ -45,13 +63,13 @@ window.addEventListener("load", function(){
 		sidVal.value = sidVal.value.replace(/[\A-Z a-z ㄱ-ㅎㅏ-ㅣ가-힣-]/g,'');
 		
 	};
-	snameVal.addEventListener("change",function(){
+	/* snameVal.addEventListener("change",function(){
 		 spans[0].innerText='';
 	        if(snameVal.value.length<8){
 				spans[0].innerText='8자이상 작성';
 				snameVal.value="";
 			}
-		});	
+		}); */	
 	sidVal.addEventListener("change",function(){
 		 spans[1].innerText='';
 	        if(sidVal.value.length!=4){

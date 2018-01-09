@@ -98,16 +98,24 @@
 	
 }
 
+#mobilelogin {
+	display: none;
+}
+
   @MEDIA screen and (max-height: 600px) {
         body {width: auto; height: auto;}
 		#padding{ margin-top: 0px ; }
 }
         
-        @MEDIA screen and (max-width: 767px) {
-	body {width: auto; height: auto; overflow-y: scroll;}
-	#padding{width:100%; visibility: hidden; margin-top: 600px ;}
-	#padding2{width: 500px; visibility: visible; font-size: 1em; position:relative; margin:0 auto;}
-	#logo{display: none;}
-	
-
+ @MEDIA screen and (max-width: 767px) {
+	body {width: auto; height: auto;}
+	#wrapper{display: none;}
+	#login{display: none;}
+	#mobilelogin{
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		margin-top:-125px;
+		display: block;
+	}
 }

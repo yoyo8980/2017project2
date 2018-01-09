@@ -25,6 +25,24 @@
 		height: 0px;
 		width: 0px;
 	}
+	@MEDIA screen and (max-width: 767px) {
+	#mktweb{
+		display: none;
+	}
+	#lmsweb{
+		float: left;
+		width: 90%;
+		height: 500px;
+		overflow: scroll;
+	}
+	.all a{
+		margin-left:0px;
+	}
+	div.lmsnavi{
+	margin-left: 0px;
+	margin-top: 25px ;
+	}
+}	
 </style>
 <script src="js/mktwebside.js"></script>
 </head>
@@ -48,20 +66,24 @@
 					<td>${bean.status }</td>			
 				</tr>
 				</c:forEach>
-				<form action="roll.do" method="get">
+		</table>			
+				<form action="roll.do" method="post">
 				<c:forEach items="${list }" var="bean" begin="0" end="0">			
 				<tr>
 					<div>
-						<button type="submit">수정</button>
-						<button type="reset">취소</button>
 						<input type="hidden" value="edit" name="root"/>
 						<input type="hidden" value="${bean.stuid }" name="sid"/>
 						<input type="hidden" value="${bean.stuname }" name="sname"/>
+						
 					</div>
 				</tr>
 				</c:forEach>
+				<div>
+					<button type="submit">수정</button>
+					<button type="reset">취소</button>
+				</div>
 				</form>
-	</table>
+
 </div>
 </body>
 </html>

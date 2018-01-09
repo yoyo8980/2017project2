@@ -18,7 +18,7 @@ public class CandiDao {
 	public ArrayList<CandiDto> candiStuAddView(){
 		ArrayList<CandiDto> list=null;
 		String sidSql="select max(sid) as sid from stu";
-		String regclassSql="select lecid from lectures where status='opened'";
+		String regclassSql="select lecid from lectures where status='opened' or status='waiting'";
 		conn=MyOracle.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sidSql);

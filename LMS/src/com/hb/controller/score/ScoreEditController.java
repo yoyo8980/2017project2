@@ -14,21 +14,24 @@ import com.hb.controller.index.SessionCheckController;
 import com.hb.model.score.ScoreDao;
 import com.hb.model.score.ScoreDto;
 
-@WebServlet(value="/scoresedit.do") // ÄÚµù ±è¼º½Ä
+@WebServlet(value="/scoresedit.do") // ï¿½Úµï¿½ ï¿½è¼ºï¿½ï¿½
 public class ScoreEditController extends HttpServlet{
+	SessionCheckController scc= new SessionCheckController();
+	boolean seChk;
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
+	
 		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-		SessionCheckController scc= new SessionCheckController();
-		if(scc.sessionChk(req, resp)){return;}
+		seChk = scc.sessionChk(req, resp);	
+		if(seChk){return;}
 		
 		String stuname=req.getParameter("stuname").trim();
 		int stuid=Integer.parseInt(req.getParameter("stuid").trim());	
 		ScoreDao dao= new ScoreDao();
 		ArrayList<ScoreDto> editList= dao.scoreView(stuname, stuid);
-		////////////////////////////////////////////////////////////////// À§ dao ¿¡¼­ scoreid ¹Þ¾Æ¿È
+		////////////////////////////////////////////////////////////////// ï¿½ï¿½ dao ï¿½ï¿½ï¿½ï¿½ scoreid ï¿½Þ¾Æ¿ï¿½
 		
 		ArrayList paramList = new ArrayList();
 		int score[] = new int[editList.size()];

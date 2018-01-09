@@ -48,7 +48,7 @@
             for(var k=0; k<menu.length; k++){
                menu[k].style.left=lcarr[k]+"px";
                                
-                //console.log(lcarr[k]);  
+                console.log(lcarr[k]);  
             }
          // 마우스휠 -김성식
         var tStamp=0;
@@ -87,11 +87,11 @@
                  document.getElementById("wrapper").style.float="left";
                  document.getElementById("padding").style.marginLeft="0px";
                  document.getElementById("padding").style.width="100%";
-                 document.getElementById("content").style.marginTop="200px" ;
+                 document.getElementById("content").style.marginTop="200px";
                  document.getElementById("login").style.visibility="visible";
-                 document.getElementById("login").style.position= "relative";
+                 document.getElementById("login").style.position= "relative" ;
                  document.getElementById("login").style.height="900px";
-                 document.getElementById("login").style.width="30%";
+                 document.getElementById("login").style.width="25%";
                  document.getElementById("login").style.float="right";
                  document.getElementById("login").style.overlow="visible" ;
                  
@@ -107,7 +107,7 @@
                      for(var k=0; k<menu.length; k++){
                         menu[k].style.left=lcarr[k]+"px";
                                         
-                         //console.log(lcarr[k]) ;  
+                         console.log(lcarr[k]) ;  
                      }
                      
                      }else{ //다시 복구
@@ -138,7 +138,7 @@
                 	 document.getElementById("wrapper").style.width="100%";
                 	 document.getElementById("wrapper").style.margin= "auto";
                 	 document.getElementById("wrapper").style.height= "1000px";
-                	 document.getElementById("login").style.marginLeft="2000px";
+                	 document.getElementById("login").style.marginLeft="2200px" ;
                 	 document.getElementById("login").style.marginTop= "300px";
                 	 document.getElementById("login").style.visibility= "hidden";
                 	 document.getElementById("login").style.width= "0%";
@@ -210,7 +210,7 @@
                     
                         contentPrev[i].style.opacity="0.5";
                         contentPrev[i].style.position="absolute";
-                        //console.log(e);
+                        console.log(e);
       					contentPrev[i].style.left=e.clientX+"px";
                         contentPrev[i].style.top="50px";
                         /* contentPrev[i].style.zIndex="0" ; */
@@ -304,7 +304,7 @@
                         for(var k=0; k<menu.length; k++){
                            menu[k].style.left=lcarr[k]+"px";
                                            
-                            //console.log(lcarr[k]) ;  
+                            console.log(lcarr[k]) ;  
                         }
                         
                         }else{ //다시 복구
@@ -393,6 +393,18 @@
 	</div>
 
 	<div id="login">
+		<h2>직원전용 페이지</h2>
+		<form action="lmsindex.do" method="post">
+
+			<label for="webid">ID</label> <input type="text" name="webid" /> <br />
+			<label for="webpw">PW</label> <input type="text" name="webpw" />
+
+			<div>
+				<button type="submit">로그인</button>
+			</div>
+		</form>
+	</div>
+	<div id="mobilelogin">
 		<h2>직원전용 페이지</h2>
 		<form action="lmsindex.do" method="post">
 
